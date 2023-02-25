@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem.csproj": {}
+    "E:\\StudentManagingSystem-Net\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem.csproj": {}
   },
   "projects": {
-    "E:\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem.csproj": {
+    "E:\\StudentManagingSystem-Net\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem.csproj",
+        "projectUniqueName": "E:\\StudentManagingSystem-Net\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem.csproj",
         "projectName": "StudentManagingSystem",
-        "projectPath": "E:\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem.csproj",
+        "projectPath": "E:\\StudentManagingSystem-Net\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "E:\\StudentManagingSystem\\StudentManagingSystem\\StudentManagingSystem\\obj\\",
+        "outputPath": "E:\\StudentManagingSystem-Net\\StudentManagingSystem\\StudentManagingSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
