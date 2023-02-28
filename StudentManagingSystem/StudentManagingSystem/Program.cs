@@ -9,6 +9,10 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<SmsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyDbContext")));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<SmsDbContext>();
+builder.Services.ConfigureApplicationCookie(config =>
+{
+    config.LoginPath ="/Login";
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
