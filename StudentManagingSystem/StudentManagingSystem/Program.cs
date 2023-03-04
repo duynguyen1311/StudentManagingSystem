@@ -1,14 +1,20 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ResumeSvc.Infrastructure.Extensions;
 using StudentManagingSystem.Model;
+using StudentManagingSystem.Model.Interface;
+using StudentManagingSystem.Repository;
+using StudentManagingSystem.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<SmsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyDbContext")));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<SmsDbContext>();
+builder.Services.AddScoped<ISmsDbContext, SmsDbContext>();
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.ConfigureApplicationCookie(config =>
 {
     config.LoginPath ="/Login";
