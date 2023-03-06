@@ -1,5 +1,6 @@
 ﻿using StudentManagingSystem.Repository.IRepository;
 using StudentManagingSystem.Repository;
+using StudentManagingSystem.Configurations.Mappers;
 
 namespace ResumeSvc.Infrastructure.Extensions
 {
@@ -8,7 +9,7 @@ namespace ResumeSvc.Infrastructure.Extensions
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
         {
             // Đăng kí automapper
-            //services.AddAutoMapper(typeof(AutoMapperProfile));
+            services.AddAutoMapper(typeof(AutoMapperProfile));
 
             // Đăng kí mediatR
             //services.AddMediatR(Assembly.GetExecutingAssembly());
