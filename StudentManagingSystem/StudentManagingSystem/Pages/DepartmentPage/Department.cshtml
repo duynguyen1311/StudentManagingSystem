@@ -16,7 +16,7 @@
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Department</li>
                             </ol>
                         </nav>
@@ -48,7 +48,7 @@
                             <tr>
                                 <td class="table-plus">@item.DepartmentName</td>
                                 <td>@item.DepartmentCode</td>
-                                <td>@item.Status</td>
+                                <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "No Data")</td>
                                 <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "No Data")</td>
                                 <td>
@@ -57,14 +57,14 @@
                                             <i class="dw dw-more"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                                            <a class="dropdown-item" asp-page="UpdateDepartment" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
+                                            <a class="dropdown-item" asp-page="DeleteDepartment" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete ?')"><i class="dw dw-delete-3"></i> Delete</a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         }
+
                     </tbody>
                 </table>
             </div>

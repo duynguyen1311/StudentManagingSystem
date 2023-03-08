@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Repository.IRepository;
 using StudentManagingSystem.ViewModel;
@@ -11,7 +12,6 @@ namespace StudentManagingSystem.Pages.DepartmentPage
         private readonly IDepartmentRepository _repository;
 
         public List<Department> ListDepartment { get; set; }
-        
         public DepartmentModel(IDepartmentRepository repository)
         {
             _repository = repository;

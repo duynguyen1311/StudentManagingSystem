@@ -69,3 +69,5 @@ E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem\obj\Deb
 E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem\obj\Debug\net6.0\StudentManagingSystem.pdb
 E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem\obj\Debug\net6.0\StudentManagingSystem.genruntimeconfig.cache
 E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem\obj\Debug\net6.0\ref\StudentManagingSystem.dll
+E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem\bin\Debug\net6.0\AutoMapper.dll
+E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

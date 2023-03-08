@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="~/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="~/src/plugins/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="~/src/plugins/sweetalert2/sweetalert2.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -452,6 +453,11 @@
 						</a>
 					</li>
 					<li>
+						<a asp-page="StudentPage/Student" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-user-12"></span><span class="mtext">Student</span>
+						</a>
+					</li>
+					<li>
 						<a href="chat.html" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-chat3"></span><span class="mtext">Chat</span>
 						</a>
@@ -494,9 +500,9 @@
         </main>
     </div>
 
-	<div class="footer-wrap pd-20 mb-20 card-box">
+	@*<div class="footer-wrap pd-20 mb-20 card-box">
 		DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
-	</div>
+	</div>*@
 
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -512,6 +518,8 @@
 	<script src="~/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 	<script src="~/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 	<script src="~/vendors/scripts/dashboard.js"></script>
+	<script src="~/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+	<script src="~/src/plugins/sweetalert2/sweet-alert.init.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

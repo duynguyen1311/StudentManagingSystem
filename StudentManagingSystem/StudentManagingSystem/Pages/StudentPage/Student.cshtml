@@ -12,25 +12,20 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Basic Tables</h4>
+                            <h4>Department List</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
+                                <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Student</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                January 2018
+                            <a class="btn btn-primary" asp-page="AddStudent">
+                                Add Student
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Export List</a>
-                                <a class="dropdown-item" href="#">Policies</a>
-                                <a class="dropdown-item" href="#">View Assets</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,19 +34,53 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>DOB</th>
+                            <th>Phone</th>
+                            <th>Class</th>
+                            <th>Department</th>
+                            <th>Status</th>
+                            <th>Created Date</th>
+                            <th>Last Modified Date</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                        </tr>
+                        @foreach (var item in Model.ListStudent)
+                        {
+                            <tr>
+                                <td class="table-plus">@item.StudentName</td>
+                                <td>@item.StudentCode</td>
+                                <td>@item.Address</td>
+                                <td>@item.Email</td>
+                                <td>@item.Gender</td>
+                                <td>@item.DOB</td>
+                                <td>@item.Phone</td>
+                                @*<td>@item.StudentCode</td>*@
+                                <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
+                                <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "No Data")</td>
+                                <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "No Data")</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                            <i class="dw dw-more"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                            <a class="dropdown-item" asp-page="UpdateDepartment" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
+                                            <a class="dropdown-item" asp-page="DeleteDepartment" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete ?')"><i class="dw dw-delete-3"></i> Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="footer-wrap pd-20 mb-20 card-box">
-            DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
         </div>
     </div>
 </div>

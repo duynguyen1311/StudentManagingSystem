@@ -20,8 +20,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcQWRkRGVwYXJ0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/DepartmentPage/DeleteDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcRGVsZXRlRGVwYXJ0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/DepartmentPage/Department.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcRGVwYXJ0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/DepartmentPage/UpdateDepartment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcVXBkYXRlRGVwYXJ0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/Error.cshtml]
@@ -54,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/StudentPage/AddStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcQWRkU3R1ZGVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/StudentPage/Student.cshtml]

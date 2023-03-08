@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Model.Interface;
 using StudentManagingSystem.Repository.IRepository;
@@ -8,10 +9,12 @@ namespace StudentManagingSystem.Repository
     public class StudentRepository : IStudentRepository
     {
         private readonly ISmsDbContext _context;
+        private readonly IMapper _mapper;
 
-        public StudentRepository(ISmsDbContext context)
+        public StudentRepository(ISmsDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         public async Task Add(Student student, CancellationToken cancellationToken = default)
         {
@@ -42,14 +45,13 @@ namespace StudentManagingSystem.Repository
 
         public async Task Update(Student student, CancellationToken cancellationToken = default)
         {
-            /*var dept = await _context.Departments.FirstOrDefaultAsync(i => i.Id == department.Id);
-            if (dept != null)
+            var oldStudent = await _context.Students.FirstOrDefaultAsync(i => i.Id == student.Id);
+            if (oldStudent != null)
             {
-                dept.DepartmentName = department.DepartmentName;
-                dept.DepartmentCode = department.DepartmentCode;
-                dept.Status = department.Status;
+                var newStudent = _mapper.Map<Student, Student>(student, oldStudent);
+                _context.Students.Update(newStudent);
                 await _context.SaveChangesAsync(cancellationToken);
-            }*/
+            }
         }
     }
 }
