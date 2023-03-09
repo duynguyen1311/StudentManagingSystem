@@ -8,7 +8,7 @@ namespace StudentManagingSystem.Pages
 {
     public class RegisterModel : PageModel
     {
-        private readonly UserManager<User> userManager;
+        /*private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
 
         [BindProperty]
@@ -45,6 +45,6 @@ namespace StudentManagingSystem.Pages
                 }
             }
             return Page();
-        }
+        }*/
     }
 }

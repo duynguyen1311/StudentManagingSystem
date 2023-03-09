@@ -22,7 +22,7 @@ namespace StudentManagingSystem.Model
         [MaxLength(50)]
         public string? Phone { get; set; }
         [ForeignKey("Class")]
-        public Guid? ClassId { get; set; }
+        public Guid? ClassRoomId { get; set; }
         public ClassRoom? ClassRoom { get; set; }
         public ICollection<Point> Point { get; set; }
     }
