@@ -11,7 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<SmsDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyDbContext")));
-builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<SmsDbContext>().AddDefaultTokenProviders();
+builder.Services.AddIdentity<User, Role>().AddEntityFrameworkStores<SmsDbContext>().AddDefaultTokenProviders();
+builder.Services.AddScoped<UserManager<User>>();
+builder.Services.AddScoped<SignInManager<User>>();
 builder.Services.AddScoped<ISmsDbContext, SmsDbContext>();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.ConfigureApplicationCookie(config =>

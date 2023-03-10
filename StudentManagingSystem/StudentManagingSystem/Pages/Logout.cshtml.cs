@@ -1,14 +1,12 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace StudentManagingSystem.Pages
 {
     public class LogoutModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> signInManager;
+        /*private readonly SignInManager<User> signInManager;
 
-        public LogoutModel(SignInManager<IdentityUser> signInManager)
+        public LogoutModel(SignInManager<User> signInManager)
         {
             this.signInManager = signInManager;
         }
@@ -18,7 +16,7 @@ namespace StudentManagingSystem.Pages
             return RedirectToPage("/Login");
         }
 
-        /*public async Task<IActionResult> OnGetLogOutAsync()
+        *//*public async Task<IActionResult> OnGetLogOutAsync()
         {
             
         }

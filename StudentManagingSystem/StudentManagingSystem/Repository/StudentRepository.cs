@@ -32,7 +32,7 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<Student>> GetAll()
         {
-            var list = await _context.Students.ToListAsync();
+            var list = await _context.Students.Include(i => i.ClassRoom).ToListAsync();
             return list;
         }
 

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace StudentManagingSystem.ViewModel
 {
@@ -25,5 +27,7 @@ namespace StudentManagingSystem.ViewModel
         public string? CreatedBy { get; set; }
         public DateTime? LastModifiedDate { get; set; }
         public string? LastModifiedBy { get; set; }
+        [JsonPropertyName("authorities")]
+        public string Role { get; set; }
     }
 }
