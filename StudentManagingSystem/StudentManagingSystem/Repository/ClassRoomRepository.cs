@@ -27,10 +27,18 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<ClassRoom>> GetAll()
         {
-            var list = await _context.ClassRooms
+            try
+            {
+                var list = await _context.ClassRooms
                 .Where(c => c.Status == true)
                 .OrderBy(c => c.CreatedDate).ToListAsync();
-            return list;
+                return list;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);  
+            }
+
         }
 
         public async Task<ClassRoom> GetById(Guid id)

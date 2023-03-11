@@ -16,6 +16,8 @@ namespace StudentManagingSystem.Configurations.Mappers
             CreateMap<ClassRoom, ClassRoom>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
             CreateMap<ClassRoom, ClassRoomViewModel>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
             CreateMap<ClassRoom, ClassRoomAddRequest>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
+            CreateMap<Subject, Subject>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
+            CreateMap<Subject, SubjectViewModel>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
             
         }
     }

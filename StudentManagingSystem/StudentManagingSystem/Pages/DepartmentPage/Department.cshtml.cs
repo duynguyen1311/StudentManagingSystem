@@ -18,7 +18,7 @@ namespace StudentManagingSystem.Pages.DepartmentPage
         }
         public async Task<IActionResult> OnGetAsync()
         {
-            ListDepartment = await _repository.GetAll();
+            ListDepartment = await _repository.Search();
             return Page();
         }
         

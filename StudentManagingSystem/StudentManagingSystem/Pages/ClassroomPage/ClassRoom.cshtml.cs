@@ -12,7 +12,7 @@ namespace StudentManagingSystem.Pages.ClassroomPage
         private readonly IClassRoomRepository _repository;
         private readonly IMapper _mapper;
 
-        public List<ClassRoomViewModel> ListClass { get; set; }
+        public List<ClassRoom> ListClass { get; set; }
         public ClassRoomModel(IClassRoomRepository repository, IMapper mapper)
         {
             _repository = repository;
@@ -20,8 +20,8 @@ namespace StudentManagingSystem.Pages.ClassroomPage
         }
         public async Task<IActionResult> OnGetAsync()
         {
-            var list = await _repository.Search();
-            ListClass = _mapper.Map<List<ClassRoomViewModel>>(list);
+            ListClass = await _repository.GetAll();
+            /*ListClass = _mapper.Map<List<R>>(list);*/
             return Page();
         }
     }

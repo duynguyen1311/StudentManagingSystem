@@ -47,7 +47,7 @@ namespace StudentManagingSystem.Pages.ClassroomPage
                 UserId = "ababa489-bf14-41be-b6e3-ac90c9d759a5"
             };
             await _repository.Add(test);
-            return RedirectToPage("/ClassroomPage/ClassRoom");
+            return RedirectToPage("/ClassRoomPage/ClassRoom");
         }
     }
 }

@@ -16,12 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassroomPage/AddClassRoom.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxBZGRDbGFzc1Jvb20uY3NodG1s
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/AddClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxBZGRDbGFzc1Jvb20uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassroomPage/ClassRoom.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxDbGFzc1Jvb20uY3NodG1s
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/ClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxDbGFzc1Jvb20uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/DeleteClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxEZWxldGVDbGFzc1Jvb20uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/UpdateClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxVcGRhdGVDbGFzc1Jvb20uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/DepartmentPage/AddDepartment.cshtml]
@@ -86,6 +94,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/StudentPage/UpdateStudent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcVXBkYXRlU3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/SubjectPage/AddSubject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViamVjdFBhZ2VcQWRkU3ViamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/SubjectPage/Subject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3ViamVjdFBhZ2VcU3ViamVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/_ViewImports.cshtml]
