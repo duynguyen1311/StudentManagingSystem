@@ -202,7 +202,7 @@
 		</div>
 	</div>
 
-	<div class="right-sidebar">
+@*	<div class="right-sidebar">
 		<div class="sidebar-title">
 			<h3 class="weight-600 font-16 text-blue">
 				Layout Settings
@@ -275,7 +275,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>*@
 
 	<div class="left-side-bar">
 		<div class="brand-logo">
@@ -445,6 +445,11 @@
 						</a>
 					</li>
 					<li>
+						<a asp-page="./ClassroomPage/ClassRoom" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-open-book-2"></span><span class="mtext">Class</span>
+						</a>
+					</li>
+					<li>
 						<a href="chat.html" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-chat3"></span><span class="mtext">Chat</span>
 						</a>
@@ -481,7 +486,7 @@
 			</div>
 		</div>
 	</div>
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

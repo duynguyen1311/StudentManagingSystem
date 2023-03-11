@@ -32,7 +32,7 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<Department>> GetAll()
         {
-            var list = await _context.Departments.OrderBy(c => c.CreatedDate).ToListAsync();
+            var list = await _context.Departments.Where(c => c.Status == true).OrderBy(c => c.CreatedDate).ToListAsync();
             return list;
         }
 
@@ -41,6 +41,12 @@ namespace StudentManagingSystem.Repository
             var department = await _context.Departments.FirstOrDefaultAsync(i => i.Id == id);
             if (department == null) throw new ArgumentException("Can not find !!!");
             return department;
+        }
+        
+        public async Task<List<Department>> Search()
+        {
+            var list = await _context.Departments.OrderBy(c => c.CreatedDate).ToListAsync();
+            return list;
         }
 
         public async Task Update(Department department, CancellationToken cancellationToken = default)

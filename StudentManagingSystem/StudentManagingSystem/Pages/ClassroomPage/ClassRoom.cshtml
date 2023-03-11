@@ -1,8 +1,7 @@
 ﻿@page
-@model StudentManagingSystem.Pages.StudentPage.StudentModel
+@model StudentManagingSystem.Pages.ClassroomPage.ClassRoomModel
 @{
 }
-
 <div class="mobile-menu-overlay"></div>
 
 <div class="main-container">
@@ -17,14 +16,14 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Student</li>
+                                <li class="breadcrumb-item active" aria-current="page">Class</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a class="btn btn-primary" asp-page="AddStudent">
-                                Add Student
+                            <a class="btn btn-primary" asp-page="AddClassRoom">
+                                Add Class
                             </a>
                         </div>
                     </div>
@@ -34,15 +33,10 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Code</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Gender</th>
-                            <th>DOB</th>
-                            <th>Phone</th>
-                            <th>Class</th>
+                            <th>Class Name</th>
+                            <th>Class Code</th>
                             <th>Department</th>
+                            <th>Teacher</th>
                             <th>Status</th>
                             <th>Created Date</th>
                             <th>Last Modified Date</th>
@@ -50,31 +44,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.ListStudent)
+                        @foreach (var item in Model.ListClass)
                         {
                             <tr>
-                                <td class="table-plus">@item.StudentName</td>
-                                <td>@item.StudentCode</td>
-                                <td>@item.Address</td>
-                                <td>@item.Email</td>
-                                <td>@item.Gender</td>
-                                <td>@(item.DOB != null ? item.DOB.Value.ToShortDateString() : "")</td>
-                                <td>@item.Phone</td>
-                                @*<td>@item.StudentCode</td>
-                                <td>@item.StudentCode</td>*@
-                                <td>Class</td>
-                                <td>Department</td>
+                                <td class="table-plus">@item.ClassName</td>
+                                <td>@item.ClassCode</td>
                                 <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
-                                <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
-                                <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "")</td>
+                                <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "No Data")</td>
+                                <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "No Data")</td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                             <i class="dw dw-more"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" asp-page="UpdateStudent" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" asp-page="DeleteStudent" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete ?')"><i class="dw dw-delete-3"></i> Delete</a>
+                                            <a class="dropdown-item" asp-page="UpdateDepartment" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
+                                            <a class="dropdown-item" asp-page="DeleteDepartment" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete ?')"><i class="dw dw-delete-3"></i> Delete</a>
                                         </div>
                                     </div>
                                 </td>

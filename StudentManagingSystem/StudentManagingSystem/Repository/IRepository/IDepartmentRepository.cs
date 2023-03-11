@@ -9,5 +9,6 @@ namespace StudentManagingSystem.Repository.IRepository
         Task Delete(Guid id, CancellationToken cancellationToken = default);
         Task<Department> GetById(Guid id);
         Task<List<Department>> GetAll();
+        Task<List<Department>> Search();
     }
 }

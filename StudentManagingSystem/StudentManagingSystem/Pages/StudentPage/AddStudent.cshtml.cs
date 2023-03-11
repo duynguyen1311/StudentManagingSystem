@@ -53,8 +53,8 @@ namespace StudentManagingSystem.Pages.StudentPage
                 Activated = true,
             };
             await _userManager.CreateAsync(user, Request.Password);
-            await CreateUserRoles(user.Id, "student");
-            return RedirectToPage("StudentPage/Student");
+            //await CreateUserRoles(user.Id, "student");
+            return RedirectToPage("/StudentPage/Student");
         }
         
         private async Task CreateUserRoles(string id, string role, CancellationToken cancellation = default)

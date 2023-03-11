@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassroomPage/AddClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxBZGRDbGFzc1Jvb20uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassroomPage/ClassRoom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nyb29tUGFnZVxDbGFzc1Jvb20uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/DepartmentPage/AddDepartment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VcQWRkRGVwYXJ0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,8 +76,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcQWRkU3R1ZGVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/StudentPage/DeleteStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcRGVsZXRlU3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/StudentPage/Student.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcU3R1ZGVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/StudentPage/UpdateStudent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudFBhZ2VcVXBkYXRlU3R1ZGVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/_ViewImports.cshtml]

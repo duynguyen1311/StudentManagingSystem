@@ -18,6 +18,7 @@ namespace ResumeSvc.Infrastructure.Extensions
             // Đăng kí repository
             services.AddScoped(typeof(IDepartmentRepository), typeof(DepartmentRepository));
             services.AddScoped(typeof(IStudentRepository), typeof(StudentRepository));
+            services.AddScoped(typeof(IClassRoomRepository), typeof(ClassRoomRepository));
 
             //Đăng kí service
             return services;

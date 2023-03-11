@@ -1,8 +1,7 @@
 ﻿@page
-@model StudentManagingSystem.Pages.StudentPage.AddStudentModel
+@model StudentManagingSystem.Pages.StudentPage.UpdateStudentModel
 @{
 }
-
 <div class="mobile-menu-overlay"></div>
 
 <div class="main-container">
@@ -27,47 +26,45 @@
             <div class="pd-20 card-box mb-30">
                 <form method="post">
                     <div class="form-group row">
-                        <label asp-for="Request.StudentName" class="col-sm-12 col-md-2 col-form-label">Student Name</label>
+                        <label asp-for="Student.Id" class="col-sm-12 col-md-2 col-form-label">Department Name</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Request.StudentName" class="form-control" type="text" placeholder="Student name" required="required">
+                            <input asp-for="Student.Id" class="form-control" type="hidden">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Request.StudentCode" class="col-sm-12 col-md-2 col-form-label">Student Code</label>
+                        <label asp-for="Student.StudentName" class="col-sm-12 col-md-2 col-form-label">Student Name</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Request.StudentCode" class="form-control" type="text" placeholder="Student code" required="required">
+                            <input asp-for="Student.StudentName" class="form-control" type="text" placeholder="Student name" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Request.Email" class="col-sm-12 col-md-2 col-form-label">Email</label>
+                        <label asp-for="Student.StudentCode" class="col-sm-12 col-md-2 col-form-label">Student Code</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Request.Email" class="form-control" type="text" placeholder="Email" required="required">
-                            <span asp-validation-for="Request.Email" class="text-danger"></span>
+                            <input asp-for="Student.StudentCode" class="form-control" type="text" placeholder="Student code" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Request.Password" class="col-sm-12 col-md-2 col-form-label">Password</label>
+                        <label asp-for="Student.Email" class="col-sm-12 col-md-2 col-form-label">Email</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Request.Password" class="form-control" type="text" placeholder="Password" required="required">
-                            <span asp-validation-for="Request.Password" class="text-danger"></span>
+                            <input asp-for="Student.Email" class="form-control" type="text" placeholder="Email" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Request.Address" class="col-sm-12 col-md-2 col-form-label">Address</label>
+                        <label asp-for="Student.Address" class="col-sm-12 col-md-2 col-form-label">Address</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Request.Address" class="form-control" type="text" placeholder="Address">
+                            <input asp-for="Student.Address" class="form-control" type="text" placeholder="Address">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Request.Phone" class="col-sm-12 col-md-2 col-form-label">Phone Number</label>
+                        <label asp-for="Student.Phone" class="col-sm-12 col-md-2 col-form-label">Phone Number</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Request.Phone" class="form-control" type="number" placeholder="Phone">
+                            <input asp-for="Student.Phone" class="form-control" type="number" placeholder="Phone">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Request.Gender" class="col-sm-12 col-md-2 col-form-label">Gender</label>
+                        <label asp-for="Student.Gender" class="col-sm-12 col-md-2 col-form-label">Gender</label>
                         <div class="col-sm-12 col-md-10">
-                            <select asp-for="Request.Gender" class="custom-select col-12">
+                            <select asp-for="Student.Gender" class="custom-select col-12">
                                 <option selected="">Choose...</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -76,14 +73,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Request.DOB" class="col-sm-12 col-md-2 col-form-label">DOB</label>
+                        <label asp-for="Student.DOB" class="col-sm-12 col-md-2 col-form-label">DOB</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Request.DOB" class="form-control date-picker" type="text" placeholder="DOB">
+                            <input asp-for="Student.DOB" class="form-control date-picker" type="text" placeholder="DOB">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Request.ClassRoomId">Class</label>
-                        <select asp-for="Request.ClassRoomId" class="custom-select2 form-control" name="state" style="width: 100%; height: 38px;">
+                        <label asp-for="Student.ClassRoomId">Class</label>
+                        <select asp-for="Student.ClassRoomId" class="custom-select2 form-control" name="state" style="width: 100%; height: 38px;">
                             <optgroup label="Pacific Time Zone">
                                 <option value="CA">California</option>
                                 <option value="NV">Nevada</option>
@@ -93,9 +90,9 @@
                         </select>
                     </div>
                     <div class="form-group row">
-                        <label  class="col-sm-12 col-md-2 col-form-label">Status</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Status</label>
                         <div class="col-sm-12 col-md-10">
-                            <select asp-for="Request.Status" class="custom-select col-12">
+                            <select asp-for="Student.Status" class="custom-select col-12">
                                 <option selected="">Choose...</option>
                                 <option value="true">True</option>
                                 <option value="false">False</option>

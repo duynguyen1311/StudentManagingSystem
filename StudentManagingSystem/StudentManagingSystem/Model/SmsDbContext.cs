@@ -5,7 +5,7 @@ using StudentManagingSystem.Model.Interface;
 
 namespace StudentManagingSystem.Model
 {
-    public class SmsDbContext : IdentityDbContext<User, Role, string, IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>, ISmsDbContext
+    public class SmsDbContext : DbContext, ISmsDbContext
     {
         public SmsDbContext(DbContextOptions<SmsDbContext> options) : base(options)
         {
@@ -30,11 +30,7 @@ namespace StudentManagingSystem.Model
             builder.Entity<User>().ToTable("Users");
             builder.Entity<Role>().ToTable("Roles");
             builder.Entity<UserRole>().ToTable("UserRoles");
-            builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims");
-            builder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins");
-            builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
-            builder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
-
+            builder.Entity<UserRole>().Ignore(c => c.User);
             builder.Entity<UserRole>(userRole =>
             {
                 userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
