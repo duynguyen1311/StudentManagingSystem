@@ -28,8 +28,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\TeacherPage\" />
-  </ItemGroup>
-
 </Project>

@@ -51,7 +51,9 @@ namespace StudentManagingSystem.Model
 
         [Column("reset_date")] public DateTime? ResetDate { get; set; }
 
-        [JsonIgnore] public virtual ICollection<UserRole> UserRoles { get; set; }
+        [ForeignKey("Role")]
+        public string? RoleId { get; set; }
+        public Role? Role { get; set; }
 
         public string? ReferralCode { get; set;}
 

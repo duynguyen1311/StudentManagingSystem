@@ -27,7 +27,5 @@ namespace StudentManagingSystem.ViewModel
         public string? CreatedBy { get; set; }
         public DateTime? LastModifiedDate { get; set; }
         public string? LastModifiedBy { get; set; }
-        [JsonPropertyName("authorities")]
-        public string Role { get; set; }
     }
 }

@@ -49,8 +49,8 @@
                                 <td class="table-plus">@item.DepartmentName</td>
                                 <td>@item.DepartmentCode</td>
                                 <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
-                                <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "No Data")</td>
-                                <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "No Data")</td>
+                                <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
+                                <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "")</td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">

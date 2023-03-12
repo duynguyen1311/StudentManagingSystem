@@ -1,5 +1,5 @@
 ﻿@page
-@model StudentManagingSystem.Pages.SubjectPage.AddSubjectModel
+@model StudentManagingSystem.Pages.TeacherPage.AddTeacherModel
 @{
 }
 <div class="mobile-menu-overlay"></div>
@@ -15,8 +15,8 @@
                         </div>*@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Subject">Subject List</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Add Subject</li>
+                                <li class="breadcrumb-item"><a asp-page="Teacher">Teacher List</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Add Teacher</li>
                             </ol>
                         </nav>
                     </div>
@@ -26,33 +26,39 @@
             <div class="pd-20 card-box mb-30">
                 <form method="post">
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.SubjectName" class="col-sm-12 col-md-2 col-form-label">Subject Name</label>
+                        <label asp-for="Request.FullName" class="col-sm-12 col-md-2 col-form-label">Name</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.SubjectName" class="form-control" type="text" placeholder="Subject name" required="required">
+                            <input asp-for="Request.FullName" class="form-control" type="text" placeholder="Name" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Subject Code</label>
+                        <label asp-for="Request.Email" class="col-sm-12 col-md-2 col-form-label">Email</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.SubjectCode" class="form-control" type="text" placeholder="Subject code" required="required">
+                            <input asp-for="Request.Email" class="form-control" type="email" placeholder="Email" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Description" class="col-sm-12 col-md-2 col-form-label">Description</label>
+                        <label asp-for="Request.Password" class="col-sm-12 col-md-2 col-form-label">Password</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.Description" class="form-control" type="text" placeholder="Description">
+                            <input asp-for="Request.Password" class="form-control" type="text" placeholder="Password" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Semester" class="col-sm-12 col-md-2 col-form-label">Semester</label>
+                        <label asp-for="Request.Adress" class="col-sm-12 col-md-2 col-form-label">Adress</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.Semester" class="form-control" type="number" placeholder="Semester" required="required">
+                            <input asp-for="Request.Adress" class="form-control" type="text" placeholder="Adress">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                        <label asp-for="Request.Phone" class="col-sm-12 col-md-2 col-form-label">Phone</label>
                         <div class="col-sm-12 col-md-10">
-                            <select asp-for="SubjectAddRequest.Status" class="custom-select col-12">
+                            <input asp-for="Request.Phone" class="form-control" type="text" placeholder="Phone">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Request.Activated" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select asp-for="Request.Activated" class="custom-select col-12">
                                 <option selected="">Choose...</option>
                                 <option value="true">Hoạt động</option>
                                 <option value="false">Không hoạt động</option>
@@ -61,7 +67,7 @@
                     </div>
                     <div class="btn-list">
                         <button type="submit" class="btn btn-primary">Save</button>
-                        <a asp-page="Subject" type="submit" class="btn btn-danger">Cancel</a>
+                        <a asp-page="Teacher" type="submit" class="btn btn-danger">Cancel</a>
                     </div>
                 </form>
             </div>

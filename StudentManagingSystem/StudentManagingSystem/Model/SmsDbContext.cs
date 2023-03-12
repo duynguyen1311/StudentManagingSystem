@@ -17,7 +17,6 @@ namespace StudentManagingSystem.Model
         public DbSet<Department> Departments { get; set; }
         public DbSet<Point> Points { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<User> Users { get; set; }
         
 
@@ -29,22 +28,6 @@ namespace StudentManagingSystem.Model
             // Rename AspNet default tables
             builder.Entity<User>().ToTable("Users");
             builder.Entity<Role>().ToTable("Roles");
-            builder.Entity<UserRole>().ToTable("UserRoles");
-            builder.Entity<UserRole>().Ignore(c => c.User);
-            builder.Entity<UserRole>(userRole =>
-            {
-                userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
-
-                userRole.HasOne(ur => ur.Role)
-                    .WithMany(r => r.UserRoles)
-                    .HasForeignKey(ur => ur.RoleId)
-                    .IsRequired();
-
-                userRole.HasOne(ur => ur.User)
-                    .WithMany(r => r.UserRoles)
-                    .HasForeignKey(ur => ur.UserId)
-                    .IsRequired();
-            });
             
             builder.Entity<Point>()
                 .HasKey(p => new { p.SubjectId, p.StudentId });
@@ -56,13 +39,6 @@ namespace StudentManagingSystem.Model
                 .HasOne(p => p.Student)
                 .WithMany(p => p.Point)
                 .HasForeignKey(p => p.StudentId);
-
-            builder.Entity<User>()
-                .HasMany(e => e.UserRoles)
-                .WithOne()
-                .HasForeignKey(e => e.UserId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Cascade);
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
