@@ -9,29 +9,33 @@ namespace StudentManagingSystem.Pages
     public class LoginModel : PageModel
     {
         private readonly SignInManager<User> signInManager;
+        private readonly UserManager<User> _userManager;
 
         [BindProperty]
         public LoginViewModel Login { get; set; }
 
-        public LoginModel(SignInManager<User> signInManager)
+        public LoginModel(SignInManager<User> signInManager, UserManager<User> userManager)
         {
             this.signInManager = signInManager;
+            _userManager = userManager;
         }
-        
+
         public void OnGet()
         {
         }
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
-                var identityResult = await signInManager.PasswordSignInAsync(Login.Email, Login.Password, Login.RememberMe, false);
-                if (identityResult.Succeeded)
+                var identityResult = await _userManager.FindByEmailAsync(Login.Email);
+                if (!identityResult.Activated)
                 {
-                    return RedirectToPage("/Index");
+                    ViewData["Title"] = "Account is not locked !";
+                    return Page();
                 }
-                ModelState.AddModelError("", "Invalid login attempt.");
+                if (await _userManager.CheckPasswordAsync(identityResult, Login.Password)) return RedirectToPage("/Index");
+                else ViewData["Title"] = "Wrong password !";
             }
             else
             {
