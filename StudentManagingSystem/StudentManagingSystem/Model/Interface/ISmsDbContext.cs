@@ -13,7 +13,6 @@ namespace StudentManagingSystem.Model.Interface
         public DbSet<Department> Departments { get; set; }
         public DbSet<Point> Points { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<User> Users { get; set; }
 
 

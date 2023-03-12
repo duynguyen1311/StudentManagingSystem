@@ -1,5 +1,5 @@
 ﻿@page
-@model StudentManagingSystem.Pages.SubjectPage.AddSubjectModel
+@model StudentManagingSystem.Pages.SubjectPage.UpdateSubjectModel
 @{
 }
 <div class="mobile-menu-overlay"></div>
@@ -26,33 +26,38 @@
             <div class="pd-20 card-box mb-30">
                 <form method="post">
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.SubjectName" class="col-sm-12 col-md-2 col-form-label">Subject Name</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.SubjectName" class="form-control" type="text" placeholder="Subject name" required="required">
+                            <input asp-for="Subject.Id" class="form-control" type="hidden" placeholder="Subject name">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Subject Code</label>
+                        <label asp-for="Subject.SubjectName" class="col-sm-12 col-md-2 col-form-label">Subject Name</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.SubjectCode" class="form-control" type="text" placeholder="Subject code" required="required">
+                            <input asp-for="Subject.SubjectName" class="form-control" type="text" placeholder="Subject name">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Description" class="col-sm-12 col-md-2 col-form-label">Description</label>
+                        <label asp-for="Subject.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Subject Code</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.Description" class="form-control" type="text" placeholder="Description">
+                            <input asp-for="Subject.SubjectCode" class="form-control" type="text" placeholder="Subject code">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Semester" class="col-sm-12 col-md-2 col-form-label">Semester</label>
+                        <label asp-for="Subject.Description" class="col-sm-12 col-md-2 col-form-label">Description</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.Semester" class="form-control" type="number" placeholder="Semester" required="required">
+                            <input asp-for="Subject.Description" class="form-control" type="text" placeholder="Description">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                        <label asp-for="Subject.Semester" class="col-sm-12 col-md-2 col-form-label">Semester</label>
                         <div class="col-sm-12 col-md-10">
-                            <select asp-for="SubjectAddRequest.Status" class="custom-select col-12">
+                            <input asp-for="Subject.Semester" class="form-control" type="number" placeholder="Semester">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Subject.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select asp-for="Subject.Status" class="custom-select col-12">
                                 <option selected="">Choose...</option>
                                 <option value="true">True</option>
                                 <option value="false">False</option>
