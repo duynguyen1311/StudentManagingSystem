@@ -20,4 +20,16 @@ namespace StudentManagingSystem.ViewModel
         public DateTime? CreatedDate { get; set; }
         public DateTime? LastModifiedDate { get; set; }
     }
+    public class TeacherUpdateRequest
+    {
+        public string Id { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string? Adress { get; set; }
+        public string? Phone { get; set; }
+        public int Type { get; set; }
+        public bool Activated { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
+    }
+    
 }

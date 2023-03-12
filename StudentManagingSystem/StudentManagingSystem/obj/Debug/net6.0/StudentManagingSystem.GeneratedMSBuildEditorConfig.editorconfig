@@ -116,8 +116,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcQWRkVGVhY2hlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/TeacherPage/DeleteTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcRGVsZXRlVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/TeacherPage/Teacher.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcVGVhY2hlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/TeacherPage/UpdateTeacher.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlclBhZ2VcVXBkYXRlVGVhY2hlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/_ViewImports.cshtml]

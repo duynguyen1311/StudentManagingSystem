@@ -55,6 +55,7 @@ namespace StudentManagingSystem.Model
         public string? RoleId { get; set; }
         public Role? Role { get; set; }
 
+        public string? Salt { get; set; }
         public string? ReferralCode { get; set;}
 
         public string? CreatedBy { get; set; }
