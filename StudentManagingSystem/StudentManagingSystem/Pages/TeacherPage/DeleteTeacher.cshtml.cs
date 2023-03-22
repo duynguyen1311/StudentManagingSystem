@@ -11,9 +11,9 @@ namespace StudentManagingSystem.Pages.TeacherPage
 {
     public class DeleteTeacherModel : PageModel
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public DeleteTeacherModel(UserManager<User> userManager)
+        public DeleteTeacherModel(UserManager<AppUser> userManager)
         {
             _userManager = userManager;
         }

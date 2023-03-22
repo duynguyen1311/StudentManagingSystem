@@ -11,11 +11,11 @@ namespace StudentManagingSystem.Pages.StudentPage
     {
         private readonly IStudentRepository _repository;
         private readonly IMapper _mapper;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
         [BindProperty]
         public Student Student { get; set; }
-        public UpdateStudentModel(IStudentRepository repository, IMapper mapper, UserManager<User> userManager)
+        public UpdateStudentModel(IStudentRepository repository, IMapper mapper, UserManager<AppUser> userManager)
         {
             _repository = repository;
             _mapper = mapper;

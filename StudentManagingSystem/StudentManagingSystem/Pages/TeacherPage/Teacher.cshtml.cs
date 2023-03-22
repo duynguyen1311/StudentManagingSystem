@@ -8,11 +8,11 @@ namespace StudentManagingSystem.Pages.TeacherPage
 {
     public class TeacherModel : PageModel
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IUserRepository _repository;
 
-        public List<User> ListTeacher { get; set; }
-        public TeacherModel(UserManager<User> userManager, IUserRepository repository)
+        public List<AppUser> ListTeacher { get; set; }
+        public TeacherModel(UserManager<AppUser> userManager, IUserRepository repository)
         {
             _userManager = userManager;
             _repository = repository;

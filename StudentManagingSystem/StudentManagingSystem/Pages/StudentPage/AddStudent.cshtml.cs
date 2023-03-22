@@ -2,9 +2,11 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using NToastNotify;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Model.Interface;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
 using StudentManagingSystem.ViewModel;
 
 namespace StudentManagingSystem.Pages.StudentPage
@@ -13,20 +15,23 @@ namespace StudentManagingSystem.Pages.StudentPage
     {
         private readonly IStudentRepository _repository;
         private readonly IMapper _mapper;
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly ISmsDbContext _context;
+        private readonly IToastNotification _notify;
 
         [BindProperty]
         public StudentAddRequest Request { get; set; }
         public List<ClassRoom> listClass { get; set; }
-        public AddStudentModel(IStudentRepository repository, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, ISmsDbContext context)
+        public AddStudentModel(IStudentRepository repository, IMapper mapper, UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager, ISmsDbContext context, IToastNotification notify)
         {
             _repository = repository;
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _notify = notify;
         }
 
         /*public async Task<IActionResult> OnGetAsync()
@@ -40,7 +45,7 @@ namespace StudentManagingSystem.Pages.StudentPage
             Request.CreatedDate = DateTime.Now;
             var student = _mapper.Map<Student>(Request);
             await _repository.Add(student);
-            var user = new User()
+            var user = new AppUser()
             {
                 Id = student.Id.ToString(),
                 FullName = student.StudentName,
@@ -51,24 +56,18 @@ namespace StudentManagingSystem.Pages.StudentPage
                 Phone = student.Phone,
                 Type = 0,
                 Activated = true,
-                RoleId = "student"
             };
-            await _userManager.CreateAsync(user, Request.Password);
-            //await CreateUserRoles(user.Id, "student");
+            var res = await _userManager.CreateAsync(user, Request.Password);
+            if (res.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, RoleConstant.STUDENT);
+                _notify.AddSuccessToastMessage("User created successfully ");
+            }
+            else
+            {
+                _notify.AddErrorToastMessage("User not created successfully ");
+            }
             return RedirectToPage("/StudentPage/Student");
         }
-        
-        /*private async Task CreateUserRoles(string id, string role, CancellationToken cancellation = default)
-        {
-            if (role == null || !role.Any()) return;
-
-            var newUR = new UserRole()
-            {
-                UserId = id,
-                RoleId = role
-            };
-            await _context.UserRoles.AddAsync(newUR);
-            await _context.SaveChangesAsync(cancellation);
-        }*/
     }
 }

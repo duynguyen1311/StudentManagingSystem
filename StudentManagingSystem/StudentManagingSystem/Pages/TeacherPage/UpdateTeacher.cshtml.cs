@@ -10,12 +10,12 @@ namespace StudentManagingSystem.Pages.TeacherPage
 {
     public class UpdateTeacherModel : PageModel
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
 
         [BindProperty]
-        public User Teacher { get; set; }
-        public UpdateTeacherModel(UserManager<User> userManager, IMapper mapper)
+        public AppUser Teacher { get; set; }
+        public UpdateTeacherModel(UserManager<AppUser> userManager, IMapper mapper)
         {
             _userManager = userManager;
             _mapper = mapper;

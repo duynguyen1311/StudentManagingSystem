@@ -8,15 +8,15 @@ namespace StudentManagingSystem.Pages
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<User> signInManager;
-        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
 
         [BindProperty]
         public LoginViewModel Login { get; set; }
 
-        public LoginModel(SignInManager<User> signInManager, UserManager<User> userManager)
+        public LoginModel(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
-            this.signInManager = signInManager;
+            _signInManager = signInManager;
             _userManager = userManager;
         }
 
@@ -28,13 +28,15 @@ namespace StudentManagingSystem.Pages
         {
             if (ModelState.IsValid)
             {
+                var result = await _signInManager
+                    .PasswordSignInAsync(Login.Email, Login.Password, Login.RememberMe, lockoutOnFailure: false);
                 var identityResult = await _userManager.FindByEmailAsync(Login.Email);
                 if (!identityResult.Activated)
                 {
                     ViewData["Title"] = "Account is not locked !";
                     return Page();
                 }
-                if (await _userManager.CheckPasswordAsync(identityResult, Login.Password)) return RedirectToPage("/Index");
+                if (result.Succeeded) return RedirectToPage("/Index");
                 else ViewData["Title"] = "Wrong password !";
             }
             else

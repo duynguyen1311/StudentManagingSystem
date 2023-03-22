@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using StudentManagingSystem.ViewModel;
 
 namespace StudentManagingSystem.Pages.DepartmentPage
 {
+    [Authorize]
     public class DepartmentModel : PageModel
     {
         private readonly IDepartmentRepository _repository;

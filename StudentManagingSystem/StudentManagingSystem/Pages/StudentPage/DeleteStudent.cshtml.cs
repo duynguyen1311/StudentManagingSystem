@@ -13,14 +13,14 @@ namespace StudentManagingSystem.Pages.StudentPage
     {
         private readonly IStudentRepository _repository;
         private readonly IMapper _mapper;
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly ISmsDbContext _context;
 
         [BindProperty]
         public StudentAddRequest Request { get; set; }
         public List<ClassRoom> listClass { get; set; }
-        public DeleteStudentModel(IStudentRepository repository, IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager, ISmsDbContext context)
+        public DeleteStudentModel(IStudentRepository repository, IMapper mapper, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ISmsDbContext context)
         {
             _repository = repository;
             _mapper = mapper;

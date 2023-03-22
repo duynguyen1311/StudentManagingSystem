@@ -4,7 +4,7 @@ namespace StudentManagingSystem.Repository.IRepository
 {
     public interface IUserRepository
     {
-        Task<User> GetById(string id);
-        Task<List<User>> Search();
+        Task<AppUser> GetById(string id);
+        Task<List<AppUser>> Search();
     }
 }

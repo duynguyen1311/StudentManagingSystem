@@ -17,6 +17,6 @@ namespace StudentManagingSystem.Model
         public Department? Department { get; set; }
         [ForeignKey("User")]
         public string? UserId { get; set; }
-        public User? User { get; set; }
+        public AppUser? User { get; set; }
     }
 }

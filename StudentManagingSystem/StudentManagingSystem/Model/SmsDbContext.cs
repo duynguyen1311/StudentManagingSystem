@@ -5,7 +5,7 @@ using StudentManagingSystem.Model.Interface;
 
 namespace StudentManagingSystem.Model
 {
-    public class SmsDbContext : DbContext, ISmsDbContext
+    public class SmsDbContext : IdentityDbContext, ISmsDbContext
     {
         public SmsDbContext(DbContextOptions<SmsDbContext> options) : base(options)
         {
@@ -16,8 +16,7 @@ namespace StudentManagingSystem.Model
         public DbSet<ClassRoom> ClassRooms { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Point> Points { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -26,9 +25,14 @@ namespace StudentManagingSystem.Model
             //new SeedDataApplicationDatabaseContext(builder).Seed();
 
             // Rename AspNet default tables
-            builder.Entity<User>().ToTable("Users");
-            builder.Entity<Role>().ToTable("Roles");
-            
+            //builder.Entity<AppUser>().ToTable("Users");
+            builder.Entity<IdentityRole>().ToTable("Roles");
+            builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles");
+            builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims");
+            builder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins");
+            builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
+            builder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
+
             builder.Entity<Point>()
                 .HasKey(p => new { p.SubjectId, p.StudentId });
             builder.Entity<Point>()
