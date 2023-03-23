@@ -3,8 +3,9 @@ using StudentManagingSystem.Model.Interface;
 using StudentManagingSystem.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using StudentManagingSystem.Repository.IRepository;
 
-namespace StudentManagingSystem.Repository.IRepository
+namespace StudentManagingSystem.Repository
 {
     public class UserRepository : IUserRepository
     {
@@ -17,6 +18,12 @@ namespace StudentManagingSystem.Repository.IRepository
             _context = context;
             _mapper = mapper;
             _userManager = userManager;
+        }
+
+        public async Task<List<AppUser>> GetAll()
+        {
+            var list = await _context.AppUsers.Where(i => i.Activated && i.Type == 1).ToListAsync();
+            return list;
         }
 
         public async Task<AppUser> GetById(string id)

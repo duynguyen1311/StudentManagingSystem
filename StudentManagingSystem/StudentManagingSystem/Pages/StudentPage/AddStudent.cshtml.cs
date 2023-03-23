@@ -2,6 +2,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using NToastNotify;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Model.Interface;
@@ -14,6 +16,7 @@ namespace StudentManagingSystem.Pages.StudentPage
     public class AddStudentModel : PageModel
     {
         private readonly IStudentRepository _repository;
+        private readonly IRoomRepository _roomRepository;
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
@@ -23,10 +26,11 @@ namespace StudentManagingSystem.Pages.StudentPage
         [BindProperty]
         public StudentAddRequest Request { get; set; }
         public List<ClassRoom> listClass { get; set; }
-        public AddStudentModel(IStudentRepository repository, IMapper mapper, UserManager<AppUser> userManager,
+        public AddStudentModel(IStudentRepository repository,IRoomRepository roomRepository, IMapper mapper, UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager, ISmsDbContext context, IToastNotification notify)
         {
             _repository = repository;
+            _roomRepository = roomRepository;
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
@@ -34,10 +38,11 @@ namespace StudentManagingSystem.Pages.StudentPage
             _notify = notify;
         }
 
-        /*public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
+            listClass = await _roomRepository.GetAll();
             return Page();
-        }*/
+        }
         public async Task<IActionResult> OnPostAsync()
         {
 
@@ -55,8 +60,15 @@ namespace StudentManagingSystem.Pages.StudentPage
                 Adress = student.Address,
                 Phone = student.Phone,
                 Type = 0,
-                Activated = true,
             };
+            if (Request.Status == true)
+            {
+                user.Activated = true;
+            }
+            else
+            {
+                user.Activated = false;
+            }
             var res = await _userManager.CreateAsync(user, Request.Password);
             if (res.Succeeded)
             {

@@ -79,14 +79,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Student.ClassRoomId">Class</label>
-                        <select asp-for="Student.ClassRoomId" class="custom-select2 form-control" name="state" style="width: 100%; height: 38px;">
-                            <optgroup label="Pacific Time Zone">
-                                <option value="CA">California</option>
-                                <option value="NV">Nevada</option>
-                                <option value="OR">Oregon</option>
-                                <option value="WA">Washington</option>
-                            </optgroup>
+                        <label>@Html.LabelFor(c=>c.Student.ClassRoomId)</label>
+                        <select asp-for="Student.ClassRoomId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
+                            @foreach (var item in Model.listClass)
+                            {
+                                <option value="@item.Id">@item.ClassName</option>
+                            }
                         </select>
                     </div>
                     <div class="form-group row">

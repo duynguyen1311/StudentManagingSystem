@@ -2,7 +2,7 @@
 
 namespace StudentManagingSystem.Repository.IRepository
 {
-    public interface IClassRoomRepository
+    public interface IRoomRepository
     {
         Task Add(ClassRoom classRoom, CancellationToken cancellationToken = default);
         Task Update(ClassRoom classRoom, CancellationToken cancellationToken = default);

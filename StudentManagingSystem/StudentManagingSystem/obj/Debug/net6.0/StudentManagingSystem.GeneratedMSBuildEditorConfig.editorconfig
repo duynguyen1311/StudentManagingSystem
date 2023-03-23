@@ -16,20 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = E:\StudentManagingSystem-Net\StudentManagingSystem\StudentManagingSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/AddClassRoom.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxBZGRDbGFzc1Jvb20uY3NodG1s
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/AddClass.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxBZGRDbGFzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/ClassRoom.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxDbGFzc1Jvb20uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/DeleteClassRoom.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxEZWxldGVDbGFzc1Jvb20uY3NodG1s
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/DeleteClass.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxEZWxldGVDbGFzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/UpdateClassRoom.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxVcGRhdGVDbGFzc1Jvb20uY3NodG1s
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/ClassRoomPage/UpdateClass.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3NSb29tUGFnZVxVcGRhdGVDbGFzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/DepartmentPage/AddDepartment.cshtml]

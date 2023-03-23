@@ -60,9 +60,7 @@
                                 <td>@item.Gender</td>
                                 <td>@(item.DOB != null ? item.DOB.Value.ToShortDateString() : "")</td>
                                 <td>@item.Phone</td>
-                                @*<td>@item.StudentCode</td>
-                                <td>@item.StudentCode</td>*@
-                                <td>Class</td>
+                                <td>@((item.ClassRoom != null && item.ClassRoom.ClassName != null) ? item.ClassRoom.ClassName : "")</td>
                                 <td>Department</td>
                                 <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>

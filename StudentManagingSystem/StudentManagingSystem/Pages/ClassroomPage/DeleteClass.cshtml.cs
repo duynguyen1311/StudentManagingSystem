@@ -4,11 +4,11 @@ using StudentManagingSystem.Repository.IRepository;
 
 namespace StudentManagingSystem.Pages.ClassRoomPage
 {
-    public class DeleteClassRoomModel : PageModel
+    public class DeleteClassModel : PageModel
     {
-        private readonly IClassRoomRepository _repository;
+        private readonly IRoomRepository _repository;
 
-        public DeleteClassRoomModel(IClassRoomRepository repository)
+        public DeleteClassModel(IRoomRepository repository)
         {
             _repository = repository;
         }

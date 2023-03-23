@@ -22,6 +22,7 @@ namespace StudentManagingSystem.ViewModel
         public DateTime? DOB { get; set; }
         public string? Phone { get; set; }
         public bool? Status { get; set; }
+        [Display(Name = "Class ")]
         public Guid? ClassRoomId { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string? CreatedBy { get; set; }

@@ -28,10 +28,11 @@ namespace StudentManagingSystem.Pages.TeacherPage
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            /*Teacher.LastModifiedDate = DateTime.Now;
-            Teacher.Type = 1;
-            var user = _mapper.Map<User>(Teacher);*/
-            await _userManager.UpdateAsync(Teacher);
+            var user = await _userManager.FindByIdAsync(Teacher.Id);
+            user = _mapper.Map(Teacher,user);
+            user.LastModifiedDate = DateTime.Now;
+            user.Type = 1;
+            await _userManager.UpdateAsync(user);
             return RedirectToPage("/TeacherPage/Teacher");
         }
     }

@@ -1,27 +1,21 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Repository.IRepository;
-using StudentManagingSystem.ViewModel;
 
-namespace StudentManagingSystem.Pages.ClassroomPage
+namespace StudentManagingSystem.Pages.ClassRoomPage
 {
     public class ClassRoomModel : PageModel
     {
-        private readonly IClassRoomRepository _repository;
-        private readonly IMapper _mapper;
-
-        public List<ClassRoom> ListClass { get; set; }
-        public ClassRoomModel(IClassRoomRepository repository, IMapper mapper)
+        private readonly IRoomRepository _repository;
+        public List<ClassRoom> ListClassRoom { get; set; }
+        public ClassRoomModel(IRoomRepository repository)
         {
             _repository = repository;
-            _mapper = mapper;
         }
         public async Task<IActionResult> OnGetAsync()
         {
-            ListClass = await _repository.GetAll();
-            /*ListClass = _mapper.Map<List<R>>(list);*/
+            ListClassRoom = await _repository.Search();
             return Page();
         }
     }
