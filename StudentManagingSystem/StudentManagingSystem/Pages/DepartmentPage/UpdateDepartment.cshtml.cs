@@ -1,13 +1,17 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
 using StudentManagingSystem.ViewModel;
+using System.Data;
 
 namespace StudentManagingSystem.Pages.DepartmentPage
 {
-    public class UpdateDepartmentModel : PageModel
+	[Authorize(Roles = RoleConstant.ADMIN)]
+	public class UpdateDepartmentModel : PageModel
     {
         private readonly IDepartmentRepository _repository;
         private readonly IMapper _mapper;

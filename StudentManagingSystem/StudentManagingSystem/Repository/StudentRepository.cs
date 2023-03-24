@@ -22,6 +22,19 @@ namespace StudentManagingSystem.Repository
             await _context.SaveChangesAsync(cancellationToken);
         }
 
+        public async Task<bool> CheckAddExistEmail(string email, CancellationToken cancellationToken = default)
+        {
+            List<Student> listS = await _context.Students.ToListAsync();
+            foreach (var cus in listS)
+            {
+                if (email == cus.Email)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public async Task Delete(Guid id, CancellationToken cancellationToken = default)
         {
             var student = await _context.Students.FirstOrDefaultAsync(i => i.Id == id);
@@ -32,7 +45,7 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<Student>> GetAll()
         {
-            var list = await _context.Students.Include(i => i.ClassRoom).ToListAsync();
+            var list = await _context.Students.Include(i => i.ClassRoom).OrderByDescending(i => i.CreatedDate).ToListAsync();
             return list;
         }
 

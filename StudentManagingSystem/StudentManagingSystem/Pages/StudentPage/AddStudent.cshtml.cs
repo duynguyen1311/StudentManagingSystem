@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,7 @@ using StudentManagingSystem.ViewModel;
 
 namespace StudentManagingSystem.Pages.StudentPage
 {
+    [Authorize(Roles =RoleConstant.ADMIN)]
     public class AddStudentModel : PageModel
     {
         private readonly IStudentRepository _repository;
@@ -49,6 +51,13 @@ namespace StudentManagingSystem.Pages.StudentPage
             Request.Id = Guid.NewGuid();
             Request.CreatedDate = DateTime.Now;
             var student = _mapper.Map<Student>(Request);
+            var check = await _repository.CheckAddExistEmail(Request.Email);
+            if(!check)
+            {
+                ViewData["Title"] = "Email has been existed !";
+                listClass = await _roomRepository.GetAll();
+                return Page();
+            }
             await _repository.Add(student);
             var user = new AppUser()
             {
@@ -75,11 +84,6 @@ namespace StudentManagingSystem.Pages.StudentPage
             if (res.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, RoleConstant.STUDENT);
-                _notify.AddSuccessToastMessage("User created successfully ");
-            }
-            else
-            {
-                _notify.AddErrorToastMessage("User not created successfully ");
             }
             return RedirectToPage("/StudentPage/Student");
         }

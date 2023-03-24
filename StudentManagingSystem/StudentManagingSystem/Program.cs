@@ -23,6 +23,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.ConfigureApplicationCookie(config =>
 {
     config.LoginPath = "/Login";
+	config.AccessDeniedPath = "/Forbidden";
 });
 builder.Services.AddRazorPages().AddNToastNotifyToastr(new ToastrOptions()
 {

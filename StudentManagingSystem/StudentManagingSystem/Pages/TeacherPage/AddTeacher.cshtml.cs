@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentManagingSystem.Model;
+using StudentManagingSystem.Repository.IRepository;
 using StudentManagingSystem.Utility;
 using StudentManagingSystem.ViewModel;
 
@@ -12,13 +13,15 @@ namespace StudentManagingSystem.Pages.TeacherPage
     {
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IUserRepository _repository;
 
         [BindProperty]
         public TeacherAddRequest Request { get; set; }
-        public AddTeacherModel(IMapper mapper, UserManager<AppUser> userManager)
+        public AddTeacherModel(IMapper mapper, UserManager<AppUser> userManager, IUserRepository repository)
         {
             _mapper = mapper;
             _userManager = userManager;
+            _repository = repository;
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -43,6 +46,12 @@ namespace StudentManagingSystem.Pages.TeacherPage
                     CreatedDate = Request.CreatedDate,
                     LastModifiedDate = null
                 };
+                var check = await _repository.CheckAddExistEmail(Request.Email);
+                if (!check)
+                {
+                    ViewData["Title"] = "Email has been existed !";
+                    return Page();
+                }
                 var res = await _userManager.CreateAsync(user, Request.Password);
                 if (res.Succeeded)
                 {

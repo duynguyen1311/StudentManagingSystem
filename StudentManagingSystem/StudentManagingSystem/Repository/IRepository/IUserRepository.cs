@@ -7,5 +7,6 @@ namespace StudentManagingSystem.Repository.IRepository
         Task<List<AppUser>> GetAll();
         Task<AppUser> GetById(string id);
         Task<List<AppUser>> Search();
+        Task<bool> CheckAddExistEmail(string email, CancellationToken cancellationToken = default);
     }
 }

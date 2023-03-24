@@ -22,10 +22,21 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<AppUser>> GetAll()
         {
-            var list = await _context.AppUsers.Where(i => i.Activated && i.Type == 1).ToListAsync();
+            var list = await _context.AppUsers.Where(i => i.Activated && i.Type == 1).OrderByDescending(i => i.CreatedDate).ToListAsync();
             return list;
         }
-
+        public async Task<bool> CheckAddExistEmail(string email, CancellationToken cancellationToken = default)
+        {
+            List<AppUser> listS = await _context.AppUsers.ToListAsync();
+            foreach (var cus in listS)
+            {
+                if (email == cus.Email)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public async Task<AppUser> GetById(string id)
         {
             var User = await _userManager.FindByIdAsync(id);
@@ -35,7 +46,7 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<AppUser>> Search()
         {
-            var list = await _context.AppUsers.Where(i => i.Activated && i.Type == 1).ToListAsync();
+            var list = await _context.AppUsers.Where(i => i.Activated && i.Type == 1).OrderByDescending(i => i.CreatedDate).ToListAsync();
             return list;
         }
     }

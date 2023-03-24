@@ -32,7 +32,7 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<Subject>> GetAll()
         {
-            var list = await _context.Subjects.Where(c => c.Status == true).OrderBy(c => c.CreatedDate).ToListAsync();
+            var list = await _context.Subjects.Where(c => c.Status == true).OrderByDescending(c => c.CreatedDate).ToListAsync();
             return list;
         }
 
@@ -45,7 +45,7 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<Subject>> Search()
         {
-            var list = await _context.Subjects.OrderBy(c => c.CreatedDate).ToListAsync();
+            var list = await _context.Subjects.OrderByDescending(c => c.CreatedDate).ToListAsync();
             return list;
         }
 

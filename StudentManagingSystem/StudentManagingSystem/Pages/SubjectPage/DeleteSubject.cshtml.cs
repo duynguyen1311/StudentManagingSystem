@@ -1,10 +1,14 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
+using System.Data;
 
 namespace StudentManagingSystem.Pages.SubjectPage
 {
-    public class DeleteSubjectModel : PageModel
+	[Authorize(Roles = RoleConstant.ADMIN)]
+	public class DeleteSubjectModel : PageModel
     {
         private readonly ISubjectRepository _repository;
 

@@ -6,10 +6,14 @@ using StudentManagingSystem.Model.Interface;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Repository.IRepository;
 using StudentManagingSystem.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using StudentManagingSystem.Utility;
+using System.Data;
 
 namespace StudentManagingSystem.Pages.StudentPage
 {
-    public class DeleteStudentModel : PageModel
+	[Authorize(Roles = RoleConstant.ADMIN)]
+	public class DeleteStudentModel : PageModel
     {
         private readonly IStudentRepository _repository;
         private readonly IMapper _mapper;

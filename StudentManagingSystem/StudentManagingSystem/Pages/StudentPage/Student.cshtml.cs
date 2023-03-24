@@ -1,11 +1,15 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
+using System.Data;
 
 namespace StudentManagingSystem.Pages.StudentPage
 {
-    public class StudentModel : PageModel
+	[Authorize(Roles = RoleConstant.ADMIN)]
+	public class StudentModel : PageModel
     {
         private readonly IStudentRepository _repository;
 

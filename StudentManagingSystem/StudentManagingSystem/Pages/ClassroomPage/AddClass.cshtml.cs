@@ -1,15 +1,19 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
 using StudentManagingSystem.ViewModel;
+using System.Data;
 
 namespace StudentManagingSystem.Pages.ClassRoomPage
 {
-    public class AddClassModel : PageModel
+	[Authorize(Roles = RoleConstant.ADMIN)]
+	public class AddClassModel : PageModel
     {
         private readonly IRoomRepository _repository;
         private readonly IUserRepository _userRepository;

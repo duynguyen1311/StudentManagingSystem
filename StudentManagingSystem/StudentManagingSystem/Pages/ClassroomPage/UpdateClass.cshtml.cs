@@ -1,13 +1,17 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Repository;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
+using System.Data;
 
 namespace StudentManagingSystem.Pages.ClassRoomPage
 {
-    public class UpdateClassModel : PageModel
+	[Authorize(Roles = RoleConstant.ADMIN)]
+	public class UpdateClassModel : PageModel
     {
         private readonly IRoomRepository _repository;
         private readonly IUserRepository _userRepository;
