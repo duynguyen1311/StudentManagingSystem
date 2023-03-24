@@ -25,6 +25,9 @@ namespace StudentManagingSystem.Model
         [StringLength(100)]
         [Column("Phone")]
         public string? Phone { get; set; }
+        [MaxLength(10)]
+        public string? Gender { get; set; }
+        public DateTime? DOB { get; set; }
 
         [Required] public int Type { get; set; }
 

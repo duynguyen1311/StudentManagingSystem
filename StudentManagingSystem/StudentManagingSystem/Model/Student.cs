@@ -21,6 +21,8 @@ namespace StudentManagingSystem.Model
         public bool? Status { get; set; }
         [MaxLength(50)]
         public string? Phone { get; set; }
+        [Required]
+        public int InSemester { get; set; }
         [ForeignKey("Class")]
         public Guid? ClassRoomId { get; set; }
         public ClassRoom? ClassRoom { get; set; }

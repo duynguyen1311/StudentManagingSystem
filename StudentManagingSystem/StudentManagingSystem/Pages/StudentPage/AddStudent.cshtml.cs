@@ -58,6 +58,8 @@ namespace StudentManagingSystem.Pages.StudentPage
                 Email = student.Email,
                 UserName = student.Email,
                 Adress = student.Address,
+                Gender = student.Gender,
+                DOB = student.DOB,
                 Phone = student.Phone,
                 Type = 0,
             };

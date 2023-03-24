@@ -36,6 +36,8 @@ namespace StudentManagingSystem.Pages.TeacherPage
                     UserName = Request.Email,
                     Adress = Request.Adress,
                     Phone = Request.Phone,
+                    Gender = Request.Gender,
+                    DOB = Request.DOB,
                     Type = 1,
                     Activated = true,
                     CreatedDate = Request.CreatedDate,

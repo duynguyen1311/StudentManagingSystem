@@ -23,14 +23,21 @@ namespace StudentManagingSystem.Pages.DepartmentPage
         }
         public async Task<IActionResult> OnPostAsync()
         {
+            try
+            {
+				var dept = _mapper.Map<Department>(DepartmentAddRequest);
+				dept.Id = Guid.NewGuid();
+				dept.CreatedDate = DateTime.Now;
+				dept.LastModifiedDate = null;
+				await _repository.Add(dept);
 
-            var dept = _mapper.Map<Department>(DepartmentAddRequest);
-            dept.Id = Guid.NewGuid();
-            dept.CreatedDate = DateTime.Now;
-            dept.LastModifiedDate = null;
-            await _repository.Add(dept);
-
-            return RedirectToPage("/DepartmentPage/Department");
+				return RedirectToPage("/DepartmentPage/Department");
+			}
+			catch (Exception ex)
+			{
+				TempData["ErrorMessage"] = ex.Message;
+				return RedirectToPage("/Error");
+			}
         }
 
     }

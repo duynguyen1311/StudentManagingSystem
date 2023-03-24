@@ -52,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/Forbidden.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9yYmlkZGVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -70,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/Shared/_ErrorLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9FcnJvckxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/Shared/_LoginLayout.cshtml]
