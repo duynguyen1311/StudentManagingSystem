@@ -189,14 +189,14 @@
             {
                 <div class="user-info-dropdown">
                     <div class="dropdown">
-                        <a class="dropdown-toggle" asp-page="UserProfile" role="button" data-toggle="dropdown">
+                        <a class="dropdown-toggle" role="button" data-toggle="dropdown">
                             <span class="user-icon">
                                 <img src="~/vendors/images/photo1.jpg" alt="">
                             </span>
                             <span class="user-name">@User.Identity.Name</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                            <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+                            <a class="dropdown-item" href="/UserProfile?@_UserManager.GetUserId(User)"><i class="dw dw-user1"></i> Profile</a>
                             <a class="dropdown-item" href="/Login"><i class="dw dw-logout"></i> Log Out</a>
                         </div>
                     </div>
@@ -446,28 +446,28 @@
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <li>
-                            <a asp-page="./DepartmentPage/Department" class="dropdown-toggle no-arrow">
+                            <a href="/DepartmentPage/Department" class="dropdown-toggle no-arrow">
                                 <span class="micon dw dw-list3"></span><span class="mtext">Department</span>
                             </a>
                         </li>
                     }
                     <li>
-                        <a asp-page="./StudentPage/Student" class="dropdown-toggle no-arrow">
+                        <a href="/StudentPage/Student" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-user-12"></span><span class="mtext">Student</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-page="./TeacherPage/Teacher" class="dropdown-toggle no-arrow">
+                        <a href="/TeacherPage/Teacher" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-user-13"></span><span class="mtext">Teacher</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-page="./ClassRoomPage/ClassRoom" class="dropdown-toggle no-arrow">
+                        <a href="/ClassRoomPage/ClassRoom" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-open-book-2"></span><span class="mtext">Class</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-page="./SubjectPage/Subject" class="dropdown-toggle no-arrow">
+                        <a href="/SubjectPage/Subject" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-book2"></span><span class="mtext">Subject</span>
                         </a>
                     </li>

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using StudentManagingSystem.Model.Interface;
+using StudentManagingSystem.Model.SeedData;
 
 namespace StudentManagingSystem.Model
 {
@@ -22,6 +23,7 @@ namespace StudentManagingSystem.Model
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            
             //new SeedDataApplicationDatabaseContext(builder).Seed();
 
             // Rename AspNet default tables
