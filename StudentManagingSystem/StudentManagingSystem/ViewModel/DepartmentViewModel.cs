@@ -11,4 +11,9 @@
         public DateTime LastModifiedDate { get; set; }
         public string LastModifiedBy { get; set; }
     }
+    public class SearchRequest
+    {
+        public string? keyword { get; set; }
+        public bool? status { get; set; }
+    }
 }

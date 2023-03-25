@@ -14,13 +14,19 @@ namespace StudentManagingSystem.Pages.DepartmentPage
         private readonly IDepartmentRepository _repository;
 
         public List<Department> ListDepartment { get; set; }
+        [BindProperty]
+        public string? Keyword { get; set; }
+        [BindProperty]
+        public bool? Status { get; set; }
         public DepartmentModel(IDepartmentRepository repository)
         {
             _repository = repository;
         }
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(string? keyword, bool? status)
         {
-            ListDepartment = await _repository.Search();
+            Keyword = keyword;
+            Status = status;
+            ListDepartment = await _repository.Search(keyword,status);
             return Page();
         }
         

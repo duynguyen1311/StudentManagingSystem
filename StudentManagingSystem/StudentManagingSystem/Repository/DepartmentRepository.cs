@@ -43,9 +43,19 @@ namespace StudentManagingSystem.Repository
             return department;
         }
         
-        public async Task<List<Department>> Search()
+        public async Task<List<Department>> Search(string? keyword, bool? status)
         {
-            var list = await _context.Departments.OrderByDescending(c => c.CreatedDate).ToListAsync();
+            var query = _context.Departments.AsQueryable();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(c =>(!string.IsNullOrEmpty(c.DepartmentName) && c.DepartmentName.Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.DepartmentCode) && c.DepartmentCode.Contains(keyword.ToLower().Trim())));
+            }
+            if(status != null)
+            {
+                query = query.Where(c => c.Status == status);
+            }
+            var list = await query.OrderByDescending(c => c.CreatedDate).ToListAsync();
             return list;
         }
 
