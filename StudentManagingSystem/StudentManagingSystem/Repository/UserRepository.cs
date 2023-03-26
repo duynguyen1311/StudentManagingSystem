@@ -49,7 +49,7 @@ namespace StudentManagingSystem.Repository
 
         public async Task<PagedList<AppUser>> Search(string? keyword, bool? status, int page, int pagesize)
         {
-            var query = _context.AppUsers.AsQueryable();
+            var query = _context.AppUsers.Where(i => i.Type == 1).AsQueryable();
             var res = await query.ToListAsync();
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -60,8 +60,8 @@ namespace StudentManagingSystem.Repository
             {
                 query = query.Where(c => c.Activated == status);
             }
-            var list = await query.Where(i => i.Activated && i.Type == 1).OrderByDescending(c => c.CreatedDate)
-                .Skip((page - 1) * page)
+            var list = await query.OrderByDescending(c => c.CreatedDate)
+                .Skip((page - 1) * pagesize)
                 .Take(pagesize).ToListAsync();
             return new PagedList<AppUser>
             {

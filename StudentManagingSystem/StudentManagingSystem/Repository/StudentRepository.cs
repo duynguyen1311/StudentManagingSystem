@@ -58,7 +58,7 @@ namespace StudentManagingSystem.Repository
                 query = query.Where(c => c.Status == status);
             }
             var list = await query.Include(i => i.ClassRoom).OrderByDescending(c => c.CreatedDate)
-                .Skip((page - 1) * page)
+                .Skip((page - 1) * pagesize)
                 .Take(pagesize).ToListAsync();
             return new PagedList<Student>
             {
