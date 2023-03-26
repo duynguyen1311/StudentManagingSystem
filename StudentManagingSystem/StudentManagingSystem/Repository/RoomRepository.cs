@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Model.Interface;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
 
 namespace StudentManagingSystem.Repository
 {
@@ -41,10 +42,27 @@ namespace StudentManagingSystem.Repository
             return c;
         }
 
-        public async Task<List<ClassRoom>> Search()
+        public async Task<PagedList<ClassRoom>> Search(string? keyword, bool? status, int page, int pagesize)
         {
-            var list = await _context.ClassRooms.Include(i => i.Department).Include(i => i.User).OrderByDescending(i => i.CreatedDate).ToListAsync();
-            return list;
+            var query = _context.ClassRooms.AsQueryable();
+            var res = await query.ToListAsync();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(c => (!string.IsNullOrEmpty(c.ClassName) && c.ClassName.Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.ClassCode) && c.ClassCode.Contains(keyword.ToLower().Trim())));
+            }
+            if (status != null)
+            {
+                query = query.Where(c => c.Status == status);
+            }
+            var list = await query.Include(i => i.Department).Include(i => i.User).OrderByDescending(c => c.CreatedDate)
+                .Skip((page - 1) * page)
+                .Take(pagesize).ToListAsync();
+            return new PagedList<ClassRoom>
+            {
+                Data = list,
+                TotalCount = res.Count
+            };
         }
 
         public async Task Update(ClassRoom classRoom, CancellationToken cancellationToken = default)

@@ -3,6 +3,7 @@ using StudentManagingSystem.Model.Interface;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
+using StudentManagingSystem.Utility;
 
 namespace StudentManagingSystem.Repository
 {
@@ -43,10 +44,27 @@ namespace StudentManagingSystem.Repository
             return subject;
         }
 
-        public async Task<List<Subject>> Search()
+        public async Task<PagedList<Subject>> Search(string? keyword, bool? status, int page, int pagesize)
         {
-            var list = await _context.Subjects.OrderByDescending(c => c.CreatedDate).ToListAsync();
-            return list;
+            var query = _context.Subjects.AsQueryable();
+            var res = await query.ToListAsync();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(c => (!string.IsNullOrEmpty(c.SubjectName) && c.SubjectName.Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.SubjectCode) && c.SubjectCode.Contains(keyword.ToLower().Trim())));
+            }
+            if (status != null)
+            {
+                query = query.Where(c => c.Status == status);
+            }
+            var list = await query.OrderByDescending(c => c.CreatedDate)
+                .Skip((page - 1) * page)
+                .Take(pagesize).ToListAsync();
+            return new PagedList<Subject>
+            {
+                Data = list,
+                TotalCount = res.Count
+            };
         }
 
         public async Task Update(Subject subject, CancellationToken cancellationToken = default)

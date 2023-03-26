@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using StudentManagingSystem.Model;
 using StudentManagingSystem.Model.Interface;
+using StudentManagingSystem.Pages;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
 
 namespace StudentManagingSystem.Repository
 {
@@ -42,21 +44,28 @@ namespace StudentManagingSystem.Repository
             if (department == null) throw new ArgumentException("Can not find !!!");
             return department;
         }
-        
-        public async Task<List<Department>> Search(string? keyword, bool? status)
+
+        public async Task<PagedList<Department>> Search(string? keyword, bool? status, int page, int pagesize)
         {
             var query = _context.Departments.AsQueryable();
+            var res = await query.ToListAsync();
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(c =>(!string.IsNullOrEmpty(c.DepartmentName) && c.DepartmentName.Contains(keyword.ToLower().Trim()))
+                query = query.Where(c => (!string.IsNullOrEmpty(c.DepartmentName) && c.DepartmentName.Contains(keyword.ToLower().Trim()))
                                       || (!string.IsNullOrEmpty(c.DepartmentCode) && c.DepartmentCode.Contains(keyword.ToLower().Trim())));
             }
-            if(status != null)
+            if (status != null)
             {
                 query = query.Where(c => c.Status == status);
             }
-            var list = await query.OrderByDescending(c => c.CreatedDate).ToListAsync();
-            return list;
+            var list = await query.OrderByDescending(c => c.CreatedDate)
+                .Skip((page - 1) * page)
+                .Take(pagesize).ToListAsync();
+            return new PagedList<Department>
+            {
+                Data = list,
+                TotalCount = res.Count
+            };
         }
 
         public async Task Update(Department department, CancellationToken cancellationToken = default)

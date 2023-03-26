@@ -29,6 +29,49 @@
                     </div>
                 </div>
             </div>
+            <form method="get">
+                <div class="row mb-15">
+                    <div class="col-md-4">
+                        <div class="header-search">
+                            <form method="get">
+                                <div class="form-group mb-0" style="display:flex">
+                                    <i style="justify-content: flex-start;"
+                                       class="dw dw-search2 search-icon mr-10 mt-15"></i>
+                                    <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
+                                           class="form-control search-input" placeholder="Search Here">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div style="display: flex;">
+                            <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Name</p>
+                            <div style="justify-content: flex-end; width: 200px;">
+                                <select asp-for="Status" class="custom-select">
+                                    <option selected="" value="null">All</option>
+                                    <option value="True">Hoạt động</option>
+                                    <option value="False">Không hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Filter</button>
+                    @*<div class="col-md-3">
+                    <div style="display: flex;">
+                    <p style="justify-content: flex-start;margin-top:9px" class="mr-10">Status</p>
+                    <div style="justify-content: flex-end; width: 200px;">
+                    <select class="custom-select">
+                    <option selected="">All</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    </select>
+                    </div>
+                    </div>
+
+                    </div>*@
+                </div>
+            </form>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered ">
                     <thead style="background-color: lightgray">
@@ -44,7 +87,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.ListClassRoom)
+                        @foreach (var item in Model.ListClassRoom.Data)
                         {
                             <tr>
                                 <td class="table-plus">@item.ClassName</td>
@@ -70,6 +113,20 @@
 
                     </tbody>
                 </table>
+            </div>
+            @{
+                var prev = Model.PageIndex > 1 ? "" : "disabled";
+                var next = Model.PageIndex <= Model.TotalPage ? "" : "disabled";
+            }
+            <div class="row">
+                <div class="btn-group mb-15" style="margin-left:15px;">
+                    <a class="btn btn-light @prev" asp-page="./ClassRoom" asp-route-pageIndex="@(Model.PageIndex-1)">Previous</a>
+                    @for (int i = 1; i <= Model.TotalPage; i++)
+                    {
+                        <a class="btn @(i == Model.PageIndex ? "btn-success" : "btn-light")" asp-page="./ClassRoom" asp-route-pageIndex="@i">@i</a>
+                    }
+                    <a class="btn btn-light @next" asp-page="./ClassRoom" asp-route-pageIndex="@(Model.PageIndex+1)">Next</a>
+                </div>
             </div>
         </div>
     </div>

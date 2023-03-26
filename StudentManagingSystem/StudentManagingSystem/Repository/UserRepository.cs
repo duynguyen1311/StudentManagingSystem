@@ -4,6 +4,9 @@ using StudentManagingSystem.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using StudentManagingSystem.Repository.IRepository;
+using StudentManagingSystem.Utility;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace StudentManagingSystem.Repository
 {
@@ -44,10 +47,27 @@ namespace StudentManagingSystem.Repository
             return User;
         }
 
-        public async Task<List<AppUser>> Search()
+        public async Task<PagedList<AppUser>> Search(string? keyword, bool? status, int page, int pagesize)
         {
-            var list = await _context.AppUsers.Where(i => i.Activated && i.Type == 1).OrderByDescending(i => i.CreatedDate).ToListAsync();
-            return list;
+            var query = _context.AppUsers.AsQueryable();
+            var res = await query.ToListAsync();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(c => (!string.IsNullOrEmpty(c.FullName) && c.FullName.Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.Email) && c.Email.Contains(keyword.ToLower().Trim())));
+            }
+            if (status != null)
+            {
+                query = query.Where(c => c.Activated == status);
+            }
+            var list = await query.Where(i => i.Activated && i.Type == 1).OrderByDescending(c => c.CreatedDate)
+                .Skip((page - 1) * page)
+                .Take(pagesize).ToListAsync();
+            return new PagedList<AppUser>
+            {
+                Data = list,
+                TotalCount = res.Count
+            };
         }
     }
 }

@@ -86,7 +86,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.ListDepartment)
+                        @foreach (var item in Model.ListDepartment.Data)
                         {
                             <tr>
                                 <td class="table-plus">@item.DepartmentName</td>
@@ -107,9 +107,22 @@
                                 </td>
                             </tr>
                         }
-
                     </tbody>
                 </table>
+            </div>
+            @{
+                var prev = Model.PageIndex > 1 ? "" : "disabled";
+                var next = Model.PageIndex <= Model.TotalPage ? "" : "disabled";
+            }
+            <div class="row">
+                <div class="btn-group mb-15" style="margin-left:15px;">
+                    <a class="btn btn-light @prev" asp-page="./Department" asp-route-pageIndex="@(Model.PageIndex-1)">Previous</a>
+                    @for (int i = 1; i <= Model.TotalPage; i++)
+                    {
+                        <a class="btn @(i == Model.PageIndex ? "btn-success" : "btn-light")" asp-page="./Department" asp-route-pageIndex="@i">@i</a>
+                    }
+                    <a class="btn btn-light @next" asp-page="./Department" asp-route-pageIndex="@(Model.PageIndex+1)">Next</a>
+                </div>
             </div>
         </div>
     </div>

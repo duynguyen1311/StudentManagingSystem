@@ -1,4 +1,5 @@
 ﻿using StudentManagingSystem.Model;
+using StudentManagingSystem.Utility;
 
 namespace StudentManagingSystem.Repository.IRepository
 {
@@ -6,7 +7,7 @@ namespace StudentManagingSystem.Repository.IRepository
     {
         Task<List<AppUser>> GetAll();
         Task<AppUser> GetById(string id);
-        Task<List<AppUser>> Search();
+        Task<PagedList<AppUser>> Search(string? keyword, bool? status, int page, int pagesize);
         Task<bool> CheckAddExistEmail(string email, CancellationToken cancellationToken = default);
     }
 }

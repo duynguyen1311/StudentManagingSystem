@@ -1,4 +1,5 @@
 ﻿using StudentManagingSystem.Model;
+using StudentManagingSystem.Utility;
 
 namespace StudentManagingSystem.Repository.IRepository
 {
@@ -9,6 +10,6 @@ namespace StudentManagingSystem.Repository.IRepository
         Task Delete(Guid id, CancellationToken cancellationToken = default);
         Task<ClassRoom> GetById(Guid id);
         Task<List<ClassRoom>> GetAll();
-        Task<List<ClassRoom>> Search();
+        Task<PagedList<ClassRoom>> Search(string? keyword, bool? status, int page, int pagesize);
     }
 }
