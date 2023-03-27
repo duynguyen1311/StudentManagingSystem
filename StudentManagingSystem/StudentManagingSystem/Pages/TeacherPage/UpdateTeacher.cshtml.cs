@@ -11,8 +11,9 @@ using System.Data;
 
 namespace StudentManagingSystem.Pages.TeacherPage
 {
-	[Authorize(Roles = RoleConstant.ADMIN)]
-	public class UpdateTeacherModel : PageModel
+    [Authorize(Roles = RoleConstant.ADMIN)]
+
+    public class UpdateTeacherModel : PageModel
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;

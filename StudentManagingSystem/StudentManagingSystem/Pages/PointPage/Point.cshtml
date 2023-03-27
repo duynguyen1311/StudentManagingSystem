@@ -1,4 +1,5 @@
 ﻿@page
+@using StudentManagingSystem.Utility;
 @model StudentManagingSystem.Pages.PointPage.PointModel
 @{
 }
@@ -20,30 +21,43 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-md-6 col-sm-12 text-right">
-                        <div class="dropdown">
-                            <a class="btn btn-primary" asp-page="AddPoint">
-                                Add Point
-                            </a>
+                    @if (User.IsInRole(RoleConstant.ADMIN) || User.IsInRole(RoleConstant.TEACHER))
+                    {
+                        <div class="col-md-6 col-sm-12 text-right">
+                            <div class="dropdown">
+                                <a class="btn btn-primary" asp-page="AddPoint">
+                                    Add Point
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
             <form method="get">
                 <div class="row mb-15">
                     <div class="col-md-4">
                         <div class="header-search">
-                            <form method="get">
+                            @*<form method="get">*@
                                 <div class="form-group mb-0" style="display:flex">
                                     <i style="justify-content: flex-start;"
                                        class="dw dw-search2 search-icon mr-10 mt-15"></i>
                                     <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
                                            class="form-control search-input" placeholder="Search Here">
                                 </div>
-                            </form>
+                            @*</form>*@
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
+                        <div class="header-search">
+                            @*<form method="get">*@
+                                <div class="form-group mb-0" style="display:flex">
+                                    <input asp-for="Semester" style="justify-content: flex-end;" type="number"
+                                           class="form-control search-input" placeholder="Semester">
+                                </div>
+                            @*</form>*@
+                        </div>
+                    </div>
+                    @*<div class="col-md-3">
                         <div style="display: flex;">
                             <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Subject</p>
                             <div style="justify-content: flex-end; width: 200px;">
@@ -70,7 +84,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Filter</button>
                 </div>
             </form>
@@ -110,10 +124,23 @@
                                         <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                             <i class="dw dw-more"></i>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" asp-page="UpdatePoint" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
-                                            <a class="dropdown-item" asp-page="DeletePoint" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete ?')"><i class="dw dw-delete-3"></i> Delete</a>
-                                        </div>
+                                        @if (User.IsInRole(RoleConstant.ADMIN))
+                                        {
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                <a class="dropdown-item" asp-page="UpdatePoint" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
+                                                <a class="dropdown-item" asp-page="DeletePoint" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete ?')"><i class="dw dw-delete-3"></i> Delete</a>
+                                            </div>
+                                        }
+                                        else if (User.IsInRole(RoleConstant.TEACHER))
+                                        {
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                <a class="dropdown-item" asp-page="UpdatePoint" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
+                                            </div>
+                                        }else{
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                <a class="dropdown-item" asp-page="UpdatePoint" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> View</a>
+                                            </div>
+                                        }
                                     </div>
                                 </td>
                             </tr>

@@ -11,8 +11,8 @@ using System.Data;
 
 namespace StudentManagingSystem.Pages.StudentPage
 {
-	[Authorize(Roles = RoleConstant.ADMIN)]
-	public class UpdateStudentModel : PageModel
+    [Authorize(Roles = RoleConstant.ADMIN)]
+    public class UpdateStudentModel : PageModel
     {
         private readonly IStudentRepository _repository;
         private readonly IRoomRepository _roomRepository;
@@ -22,7 +22,7 @@ namespace StudentManagingSystem.Pages.StudentPage
         [BindProperty]
         public Student Student { get; set; }
         public List<ClassRoom> listClass { get; set; }
-        public UpdateStudentModel(IStudentRepository repository,IRoomRepository roomRepository, IMapper mapper, UserManager<AppUser> userManager)
+        public UpdateStudentModel(IStudentRepository repository, IRoomRepository roomRepository, IMapper mapper, UserManager<AppUser> userManager)
         {
             _repository = repository;
             _roomRepository = roomRepository;
@@ -40,7 +40,7 @@ namespace StudentManagingSystem.Pages.StudentPage
             Student.LastModifiedDate = DateTime.Now;
             await _repository.Update(Student);
             var user = await _userManager.FindByIdAsync(Student.Id.ToString());
-            if(Student.Status == true)
+            if (Student.Status == true)
             {
                 user.Activated = true;
             }

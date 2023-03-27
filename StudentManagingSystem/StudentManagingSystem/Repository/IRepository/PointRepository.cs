@@ -39,7 +39,7 @@ namespace StudentManagingSystem.Repository.IRepository
             return point;
         }
 
-        public async Task<PagedList<Point>> Search(string? keyword, Guid? subId, Guid? stuId, int page, int pagesize)
+        public async Task<PagedList<Point>> Search(string? keyword,int? semester, Guid? subId, Guid? stuId, int page, int pagesize)
         {
             var query = _context.Points.AsQueryable();
             var res = await query.ToListAsync();
@@ -65,6 +65,10 @@ namespace StudentManagingSystem.Repository.IRepository
                     query = query.Where(i => i.Student.Id == null);
                 }
                 query = query.Where(i => i.Student.Id == stuId);
+            }
+            if (semester != null)
+            {
+                query = query.Where(i =>i.Subject.Semester == semester);
             }
             var list = await query.Include(i => i.Subject).Include(i => i.Student).OrderByDescending(c => c.CreatedDate)
                 .Skip((page - 1) * pagesize)

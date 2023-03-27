@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,6 +8,7 @@ using StudentManagingSystem.Utility;
 
 namespace StudentManagingSystem.Pages.TeacherPage
 {
+    [Authorize(Roles = RoleConstant.ADMIN)]
     public class TeacherModel : PageModel
     {
         private readonly UserManager<AppUser> _userManager;

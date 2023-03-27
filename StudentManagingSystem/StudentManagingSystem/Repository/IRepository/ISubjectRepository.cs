@@ -11,5 +11,6 @@ namespace StudentManagingSystem.Repository.IRepository
         Task<Subject> GetById(Guid id);
         Task<List<Subject>> GetAll();
         Task<PagedList<Subject>> Search(string? keyword, bool? status, int page, int pagesize);
+        Task<PagedList<Subject>> SearchByStudent(string? keyword, bool? status,Guid? stuId, int? semester, int page, int pagesize);
     }
 }

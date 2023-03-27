@@ -10,7 +10,7 @@ using System.Data;
 
 namespace StudentManagingSystem.Pages.DepartmentPage
 {
-	[Authorize(Roles = RoleConstant.ADMIN)]
+	[Authorize]
 	public class UpdateDepartmentModel : PageModel
     {
         private readonly IDepartmentRepository _repository;

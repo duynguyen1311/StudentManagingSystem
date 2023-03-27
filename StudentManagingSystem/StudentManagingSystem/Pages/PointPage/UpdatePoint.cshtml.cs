@@ -8,7 +8,7 @@ using System.Data;
 
 namespace StudentManagingSystem.Pages.PointPage
 {
-    [Authorize(Roles = RoleConstant.ADMIN)]
+    [Authorize]
     public class UpdatePointModel : PageModel
     {
         private readonly IPointRepository _repository;

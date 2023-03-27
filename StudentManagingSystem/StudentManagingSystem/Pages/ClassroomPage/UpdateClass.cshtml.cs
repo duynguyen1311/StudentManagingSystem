@@ -10,7 +10,7 @@ using System.Data;
 
 namespace StudentManagingSystem.Pages.ClassRoomPage
 {
-	[Authorize(Roles = RoleConstant.ADMIN)]
+	[Authorize]
 	public class UpdateClassModel : PageModel
     {
         private readonly IRoomRepository _repository;

@@ -67,6 +67,43 @@ namespace StudentManagingSystem.Repository
             };
         }
 
+        public async Task<PagedList<Subject>> SearchByStudent(string? keyword, bool? status, Guid? stuId, int? semester, int page, int pagesize)
+        {
+            var query = _context.Points.AsQueryable();
+            var listSub = new List<Subject>();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(c => (!string.IsNullOrEmpty(c.Subject.SubjectName) && c.Subject.SubjectName.Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.Subject.SubjectCode) && c.Subject.SubjectCode.Contains(keyword.ToLower().Trim())));
+            }
+            if (status != null)
+            {
+                query = query.Where(c => c.Subject.Status == status);
+            }
+            if (stuId != null)
+            {
+                if (stuId == Guid.Empty)
+                {
+                    query = query.Where(i => i.Student.Id == null);
+                }
+                query = query.Where(i => i.Student.Id == stuId);
+            }
+            if (semester != null)
+            {
+                query = query.Where(i => i.Subject.Semester == semester);
+            }
+            var query1 = query.Include(i => i.Subject).OrderByDescending(c => c.CreatedDate);
+            var query2 = await query1.Skip((page - 1) * pagesize)
+                .Take(pagesize).ToListAsync();
+            var res = await query1.ToListAsync();
+            listSub = query2.Select(i => i.Subject).ToList();
+            return new PagedList<Subject>
+            {
+                Data = listSub,
+                TotalCount = res.Count
+            };
+        }
+
         public async Task Update(Subject subject, CancellationToken cancellationToken = default)
         {
             var dept = await _context.Subjects.FirstOrDefaultAsync(i => i.Id == subject.Id);

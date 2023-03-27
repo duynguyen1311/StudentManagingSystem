@@ -9,6 +9,6 @@ namespace StudentManagingSystem.Repository.IRepository
         Task Update(Point point, CancellationToken cancellationToken = default);
         Task Delete(Guid id, CancellationToken cancellationToken = default);
         Task<Point> GetById(Guid id);
-        Task<PagedList<Point>> Search(string? keyword, Guid? subId,Guid? stuId, int page, int pagesize);
+        Task<PagedList<Point>> Search(string? keyword,int? semester, Guid? subId,Guid? stuId, int page, int pagesize);
     }
 }

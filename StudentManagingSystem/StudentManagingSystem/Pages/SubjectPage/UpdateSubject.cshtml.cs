@@ -9,7 +9,7 @@ using System.Data;
 
 namespace StudentManagingSystem.Pages.SubjectPage
 {
-	[Authorize(Roles = RoleConstant.ADMIN)]
+	[Authorize]
 	public class UpdateSubjectModel : PageModel
     {
         private readonly ISubjectRepository _repository;
