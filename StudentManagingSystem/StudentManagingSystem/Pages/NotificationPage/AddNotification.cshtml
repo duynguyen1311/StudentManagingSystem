@@ -26,25 +26,25 @@
             <div class="pd-20 card-box mb-30">
                 <form method="post">
                     <div class="form-group row">
-                        <label asp-for="NotificationAddRequest.Title" class="col-sm-12 col-md-2 col-form-label">Notification Name</label>
+                        <label asp-for="NotificationAddRequest.Title" class="col-sm-12 col-md-2 col-form-label">Title</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="NotificationAddRequest.Title" class="form-control" type="text" placeholder="Notification name">
+                            <input asp-for="NotificationAddRequest.Title" class="form-control" type="text" placeholder="Title">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="NotificationAddRequest.SubTitle" class="col-sm-12 col-md-2 col-form-label">Notification Code</label>
+                        <label asp-for="NotificationAddRequest.SubTitle" class="col-sm-12 col-md-2 col-form-label">Subtitle</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="NotificationAddRequest.SubTitle" class="form-control" type="text" placeholder="Notification code">
+                            <input asp-for="NotificationAddRequest.SubTitle" class="form-control" type="text" placeholder="Subtitle">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label asp-for="NotificationAddRequest.Content" class="col-sm-12 col-md-2 col-form-label">Address</label>
+                        <label asp-for="NotificationAddRequest.Content" class="col-sm-12 col-md-2 col-form-label">Content</label>
                         <textarea asp-for="NotificationAddRequest.Content" class="form-control"></textarea>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="NotificationAddRequest.Link" class="col-sm-12 col-md-2 col-form-label">Notification Code</label>
+                        <label asp-for="NotificationAddRequest.Link" class="col-sm-12 col-md-2 col-form-label">Link</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="NotificationAddRequest.Link" class="form-control" type="text" placeholder="Notification code">
+                            <input asp-for="NotificationAddRequest.Link" class="form-control" type="url" placeholder="Link">
                         </div>
                     </div>
                     <div class="form-group row">

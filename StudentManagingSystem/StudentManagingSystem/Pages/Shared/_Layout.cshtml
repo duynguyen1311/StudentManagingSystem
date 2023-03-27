@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using StudentManagingSystem.Model;
+@using StudentManagingSystem.Repository.IRepository;
 @using StudentManagingSystem.Utility;
 @inject SignInManager<AppUser> _SignInManager
 @inject UserManager<AppUser> _UserManager
+@inject INotiRepository _repository
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +47,9 @@
             <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
         </div>
         <div class="header-right">
+            @{
+                var listNoti = await _repository.GetAll();
+            }
             @if (_SignInManager.IsSignedIn(User))
             {
                 <div class="user-notification">
@@ -56,13 +61,18 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="notification-list mx-h-350 customscroll">
                                 <ul>
-                                    <li>
-                                        <a href="#">
-                                            <img src="vendors/images/img.jpg" alt="">
-                                            <h3>John Doe</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                        </a>
-                                    </li>
+                                    @foreach (var item in listNoti)
+                                    {
+                                        <li>
+                                            <a href="#">
+                                                @*<img src="vendors/images/img.jpg" alt="">*@
+                                                <h3>@item.Title</h3>
+                                                <p>@item.Content</p><br>
+                                                <p style="font-style:italic;font-weight: bold;">@item.CreatedDate</p>
+                                            </a>
+                                        </li>
+                                    }
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -93,11 +103,19 @@
     </div>
 
     <div class="left-side-bar">
-        <div class="brand-logo">
+        @*<div class="brand-logo">
             <a href="../..">
-                <img src="~/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-                <img src="~/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+                <img style="max-width: 56px;" src="vendors/images/home-icon.png" alt="">
             </a>
+            
+        </div>*@
+        <div style="display:flex" class="brand-logo">
+            <a class="justify-content-lg-start" href="login.html">
+                <img style="max-width: 56px;" src="vendors/images/home-icon.png" alt="">
+            </a>
+            <div style="display: flex; flex-direction: column; justify-content: center">
+                <h5 class="text-white">SMS System</h5>
+            </div>
             <div class="close-sidebar" data-toggle="left-sidebar-close">
                 <i class="ion-close-round"></i>
             </div>

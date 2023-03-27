@@ -49,12 +49,12 @@
                         {
                             <tr>
                                 <td class="table-plus">@item.Title</td>
-                                <td>@item.Subtitle</td>
+                                <td>@item.SubTitle</td>
                                 <td>@item.Content</td>
                                 <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
                                 <td>@item.Link</td>
-                                <td>@item.CreatedBy</td>
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
+                                <td>@item.CreatedBy</td>
                                 <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "")</td>
                                 <td>
                                     <div class="dropdown">
