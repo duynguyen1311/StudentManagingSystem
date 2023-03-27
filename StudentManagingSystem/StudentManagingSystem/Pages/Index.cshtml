@@ -32,65 +32,13 @@
                                     @item.Content
                                     <br>
                                     <br>
-                                    <a asp-page="./Index" asp-route-id="@item.Id" class="btn btn-info" data-toggle="modal" data-target="#bd-example-modal-lg">Details</a>
+                                    <a class="btn btn-info" data-toggle="modal" data-target="@("#detail-"+item.Id)" data-url="@Url.Action($"Details/{item.Id}")">Details</a>
+                                    @await Html.PartialAsync("_NotificationPartial", item)
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1"
-     role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form>
-                    <ol class="breadcrumb">
-                        <li>
-                            <span id="ctl00_lblNavigation">
-                                <a href="../Student.aspx">Home</a>&nbsp;|&nbsp;<b>Notification</b>
-                            </span>
-                        </li>
-                    </ol>
-                    <table>
-                        <tbody>
-                            <tr style="border-bottom: 0 none">
-                                <td>
-                                    <div>
-                                        <div id="ctl00_mainContent_divContent">
-                                            <span class="fon31">
-                                                @( Model.Notification != null && Model.Notification.Title != null ? Model.Notification.Title : "")
-                                            </span><br>Post by
-                                            @(Model.Notification != null && Model.Notification.CreatedBy != null ? Model.Notification.CreatedBy : "")
-                                            on @(Model.Notification != null && Model.Notification.CreatedDate != null ? Model.Notification.CreatedDate : "")
-                                            <hr>
-                                            <p>
-                                                @(Model.Notification != null && Model.Notification.Content != null ? Model.Notification.Content : "")
-                                            </p>
-                                            <p>@(Model.Notification != null && Model.Notification.CreatedBy != null ? Model.Notification.CreatedBy : "")</p>
-                                        </div>
-                                        <div>
-                                            <hr><b>Link</b> : 
-                                            <a href="@(Model.Notification != null && Model.Notification.Link != null ? Model.Notification.Link : "")">
-                                                @(Model.Notification != null && Model.Notification.Link != null ? Model.Notification.Link : "")
-                                            </a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal">
-                    Close
-                </button>
             </div>
         </div>
     </div>

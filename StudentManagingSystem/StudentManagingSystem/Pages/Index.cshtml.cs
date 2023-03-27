@@ -15,8 +15,7 @@ namespace StudentManagingSystem.Pages
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly INotiRepository _repository;
-        
-        public Notification Notification { get; set; }
+
         public List<Notification> listNoti { get; set; }
         public IndexModel(ILogger<IndexModel> logger, RoleManager<IdentityRole> roleManager,UserManager<AppUser> userManager, INotiRepository repository)
         {
@@ -31,10 +30,12 @@ namespace StudentManagingSystem.Pages
             listNoti = await _repository.GetAll();
             return Page();
         }
-        public async Task<IActionResult> OnGetDetail(Guid id)
+        public async Task<IActionResult> Details(Guid id)
         {
-            Notification = await _repository.GetById(id);
-            return Page();
+            // load data for the item with the specified ID
+            var item = await _repository.GetById(id);
+
+            return Partial("_NotificationPartial", item);
         }
     }
 }
