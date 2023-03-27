@@ -67,6 +67,11 @@ namespace StudentManagingSystem.Repository
             };
         }
 
+        public async Task<List<Student>> GetAllWithoutFilter()
+        {
+            return await _context.Students.Where(i => i.Status == true).OrderByDescending(i => i.CreatedDate).ToListAsync();
+        }
+
         public async Task<Student> GetById(Guid id)
         {
             var student = await _context.Students.FirstOrDefaultAsync(i => i.Id == id);

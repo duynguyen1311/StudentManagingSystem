@@ -11,5 +11,6 @@ namespace StudentManagingSystem.Repository.IRepository
         Task<bool> CheckAddExistEmail(string email, CancellationToken cancellationToken = default);
         Task<Student> GetById(Guid id);
         Task<PagedList<Student>> GetAll(string? keyword, bool? status, int page, int pagesize);
+        Task<List<Student>> GetAllWithoutFilter();
     }
 }

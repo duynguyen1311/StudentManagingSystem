@@ -269,7 +269,7 @@ namespace StudentManagingSystem.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ClassRooms");
+                    b.ToTable("ClassRooms", (string)null);
                 });
 
             modelBuilder.Entity("StudentManagingSystem.Model.Department", b =>
@@ -305,7 +305,7 @@ namespace StudentManagingSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("StudentManagingSystem.Model.Point", b =>
@@ -345,7 +345,7 @@ namespace StudentManagingSystem.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("Points");
+                    b.ToTable("Points", (string)null);
                 });
 
             modelBuilder.Entity("StudentManagingSystem.Model.Student", b =>
@@ -408,7 +408,7 @@ namespace StudentManagingSystem.Migrations
 
                     b.HasIndex("ClassRoomId");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("StudentManagingSystem.Model.Subject", b =>
@@ -451,7 +451,7 @@ namespace StudentManagingSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Subjects");
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("StudentManagingSystem.Model.AppUser", b =>

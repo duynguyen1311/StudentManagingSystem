@@ -5,9 +5,6 @@ namespace StudentManagingSystem.Model
 {
     public class Point : BaseEntity<Guid>
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
         [ForeignKey("Student")]
         public Guid StudentId { get; set; }
         public Student? Student { get; set; }

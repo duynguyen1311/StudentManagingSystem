@@ -68,6 +68,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/PointPage/AddPoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXEFkZFBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/PointPage/DeletePoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXERlbGV0ZVBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/PointPage/Point.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXFBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/PointPage/UpdatePoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9pbnRQYWdlXFVwZGF0ZVBvaW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/StudentManagingSystem-Net/StudentManagingSystem/StudentManagingSystem/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
