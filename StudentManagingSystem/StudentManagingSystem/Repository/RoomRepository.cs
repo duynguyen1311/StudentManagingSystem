@@ -4,6 +4,8 @@ using StudentManagingSystem.Model;
 using StudentManagingSystem.Model.Interface;
 using StudentManagingSystem.Repository.IRepository;
 using StudentManagingSystem.Utility;
+using System;
+using System.Security.Cryptography;
 
 namespace StudentManagingSystem.Repository
 {
@@ -42,10 +44,11 @@ namespace StudentManagingSystem.Repository
             return c;
         }
 
-        public async Task<PagedList<ClassRoom>> Search(string? keyword, bool? status, int page, int pagesize)
+        
+
+        public async Task<PagedList<ClassRoom>> Search(string? keyword, bool? status, string? tid, int page, int pagesize)
         {
             var query = _context.ClassRooms.AsQueryable();
-            var res = await query.ToListAsync();
             if (!string.IsNullOrEmpty(keyword))
             {
                 query = query.Where(c => (!string.IsNullOrEmpty(c.ClassName) && c.ClassName.Contains(keyword.ToLower().Trim()))
@@ -55,12 +58,41 @@ namespace StudentManagingSystem.Repository
             {
                 query = query.Where(c => c.Status == status);
             }
-            var list = await query.Include(i => i.Department).Include(i => i.User).OrderByDescending(c => c.CreatedDate)
-                .Skip((page - 1) * pagesize)
+            if (tid != null)
+            {
+                query = query.Where(i => i.UserId == tid);
+            }
+            var query1 = query.Include(i => i.Department).Include(i => i.User).OrderByDescending(c => c.CreatedDate);
+            var query2 = await query1.Skip((page - 1) * pagesize)
                 .Take(pagesize).ToListAsync();
+            var res = await query1.ToListAsync();
             return new PagedList<ClassRoom>
             {
-                Data = list,
+                Data = query2,
+                TotalCount = res.Count
+            };
+        }
+
+        public async Task<List<Student>> ListStudentByClass(Guid sid)
+        {
+            var list = await _context.Students.Where(i =>i.Status == true && i.ClassRoomId == sid).Include(i => i.ClassRoom).OrderByDescending(c => c.CreatedDate).ToListAsync();
+            return list;
+        }
+
+        public async Task<PagedList<ClassRoom>> SearchClassByStudent(string? keyword, bool? status, Guid? sid, int page, int pagesize)
+        {
+            var query = _context.Students.AsQueryable();
+            
+            var query1 = query.Where(i => i.Id == sid)
+                .Include(i => i.ClassRoom).ThenInclude(i => i.Department)
+                .Include(i => i.ClassRoom).ThenInclude(i => i.User)
+                .OrderByDescending(c => c.CreatedDate);
+            var query2 = await query1.Skip((page - 1) * pagesize)
+                .Take(pagesize).Select(i => i.ClassRoom).ToListAsync();
+            var res = await query1.ToListAsync();
+            return new PagedList<ClassRoom>
+            {
+                Data = query2,
                 TotalCount = res.Count
             };
         }

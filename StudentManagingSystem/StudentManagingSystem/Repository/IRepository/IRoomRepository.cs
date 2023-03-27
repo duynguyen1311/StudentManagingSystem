@@ -10,6 +10,9 @@ namespace StudentManagingSystem.Repository.IRepository
         Task Delete(Guid id, CancellationToken cancellationToken = default);
         Task<ClassRoom> GetById(Guid id);
         Task<List<ClassRoom>> GetAll();
-        Task<PagedList<ClassRoom>> Search(string? keyword, bool? status, int page, int pagesize);
+        Task<PagedList<ClassRoom>> Search(string? keyword, bool? status,string? tid, int page, int pagesize);
+        Task<PagedList<ClassRoom>> SearchClassByStudent(string? keyword, bool? status,Guid? sid, int page, int pagesize);
+        Task<List<Student>> ListStudentByClass(Guid sid);
+        
     }
 }

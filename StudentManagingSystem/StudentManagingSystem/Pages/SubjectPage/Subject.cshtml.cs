@@ -51,10 +51,11 @@ namespace StudentManagingSystem.Pages.SubjectPage
             {
                 Keyword = keyword;
                 Status = status;
+                Semester = semester;
                 if (pageIndex == 0) pageIndex = 1;
                 PageIndex = pageIndex;
                 pagesize = 4;
-                ListSubject = await _repository.Search(keyword, status, pageIndex, pagesize);
+                ListSubject = await _repository.Search(keyword, status,semester, pageIndex, pagesize);
                 TotalPage = (int)(Math.Ceiling(ListSubject.TotalCount / (double)pagesize));
             }
             

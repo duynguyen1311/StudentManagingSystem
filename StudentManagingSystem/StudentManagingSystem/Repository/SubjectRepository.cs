@@ -44,7 +44,7 @@ namespace StudentManagingSystem.Repository
             return subject;
         }
 
-        public async Task<PagedList<Subject>> Search(string? keyword, bool? status, int page, int pagesize)
+        public async Task<PagedList<Subject>> Search(string? keyword, bool? status,int? semester, int page, int pagesize)
         {
             var query = _context.Subjects.AsQueryable();
             var res = await query.ToListAsync();
@@ -56,6 +56,10 @@ namespace StudentManagingSystem.Repository
             if (status != null)
             {
                 query = query.Where(c => c.Status == status);
+            }
+            if (semester != null)
+            {
+                query = query.Where(i => i.Semester == semester);
             }
             var list = await query.OrderByDescending(c => c.CreatedDate)
                 .Skip((page - 1) * pagesize)
