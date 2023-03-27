@@ -129,78 +129,118 @@
                                 <ul class="nav nav-tabs customtab" role="tablist">
                                     <!-- <li class="nav-item">
                                         <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">Timeline</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#tasks" role="tab">Tasks</a>
                                     </li> -->
                                     <li class="nav-item">
                                         <a class="nav-link" data-toggle="tab" href="#setting" role="tab">Settings</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#tasks" role="tab">Change password</a>
+                                    </li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div class="profile-setting">
-                                        <form method="post">
-                                            <ul class="profile-edit-list row">
-                                                <li class="weight-500 col-md-12">
-                                                    <h4 class="text-blue h5 mb-20">Edit Your Personal Setting</h4>
-                                                    <div class="form-group">
-                                                        <input asp-for="Profile.Id" class="form-control form-control-lg" type="hidden">
-                                                    </div>
-                                                    @if (User.IsInRole(RoleConstant.ADMIN))
-                                                    {
+                                    <div class="tab-pane fade" id="setting" role="tabpanel">
+                                        <div class="profile-setting">
+                                            <form method="post">
+                                                <ul class="profile-edit-list row">
+                                                    <li class="weight-500 col-md-12">
+                                                        <h4 class="text-blue h5 mb-20">Edit Your Personal Setting</h4>
                                                         <div class="form-group">
-                                                            <label asp-for="Profile.FullName">Full Name</label>
-                                                            <input asp-for="Profile.FullName" class="form-control form-control-lg" type="text">
+                                                            <input asp-for="Profile.Id" class="form-control form-control-lg" type="hidden">
                                                         </div>
+                                                        @if (User.IsInRole(RoleConstant.ADMIN))
+                                                        {
+                                                            <div class="form-group">
+                                                                <label asp-for="Profile.FullName">Full Name</label>
+                                                                <input asp-for="Profile.FullName" class="form-control form-control-lg" type="text">
+                                                            </div>
 
-                                                    }
-                                                    else
-                                                    {
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="form-group">
+                                                                <label asp-for="Profile.FullName">Full Name</label>
+                                                                <input asp-for="Profile.FullName" class="form-control form-control-lg" readonly="readonly">
+                                                            </div>
+                                                        }
+                                                        @if (User.IsInRole(RoleConstant.ADMIN))
+                                                        {
+                                                            <div class="form-group">
+                                                                <label asp-for="Profile.Email">Email</label>
+                                                                <input asp-for="Profile.Email" class="form-control form-control-lg" type="email">
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="form-group">
+                                                                <label asp-for="Profile.Email">Email</label>
+                                                                <input asp-for="Profile.Email" class="form-control form-control-lg" readonly="readonly">
+                                                            </div>
+                                                        }
                                                         <div class="form-group">
-                                                            <label asp-for="Profile.FullName">Full Name</label>
-                                                            <input asp-for="Profile.FullName" class="form-control form-control-lg" readonly="readonly">
+                                                            <label asp-for="Profile.DOB">Date of birth</label>
+                                                            <input asp-for="Profile.DOB" class="form-control form-control-lg date-picker" type="text">
                                                         </div>
-                                                    }
-                                                    @if (User.IsInRole(RoleConstant.ADMIN))
-                                                    {
                                                         <div class="form-group">
-                                                            <label asp-for="Profile.Email">Email</label>
-                                                            <input asp-for="Profile.Email" class="form-control form-control-lg" type="email">
+                                                            <label asp-for="Profile.Gender">Gender</label>
+                                                            <select asp-for="Profile.Gender" class="selectpicker form-control form-control-lg" data-style="btn-outline-secondary btn-lg" title="Not Chosen">
+                                                                <option>Male</option>
+                                                                <option>Female</option>
+                                                                <option>Other</option>
+                                                            </select>
                                                         </div>
-                                                    }
-                                                    else
-                                                    {
                                                         <div class="form-group">
-                                                            <label asp-for="Profile.Email">Email</label>
-                                                            <input asp-for="Profile.Email" class="form-control form-control-lg" readonly="readonly">
+                                                            <label asp-for="Profile.Phone">Phone Number</label>
+                                                            <input asp-for="Profile.Phone" class="form-control form-control-lg" type="text">
                                                         </div>
-                                                    }
-                                                    <div class="form-group">
-                                                        <label asp-for="Profile.DOB">Date of birth</label>
-                                                        <input asp-for="Profile.DOB" class="form-control form-control-lg date-picker" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label asp-for="Profile.Gender">Gender</label>
-                                                        <select asp-for="Profile.Gender" class="selectpicker form-control form-control-lg" data-style="btn-outline-secondary btn-lg" title="Not Chosen">
-                                                            <option>Male</option>
-                                                            <option>Female</option>
-                                                            <option>Other</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label asp-for="Profile.Phone">Phone Number</label>
-                                                        <input asp-for="Profile.Phone" class="form-control form-control-lg" type="text">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label asp-for="Profile.Adress">Address</label>
-                                                        <textarea asp-for="Profile.Adress" class="form-control"></textarea>
-                                                    </div>
-                                                    <div class="form-group mb-0">
-                                                        <input type="submit" class="btn btn-primary" value="Update Information">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </form>
+                                                        <div class="form-group">
+                                                            <label asp-for="Profile.Adress">Address</label>
+                                                            <textarea asp-for="Profile.Adress" class="form-control"></textarea>
+                                                        </div>
+                                                        <div class="form-group mb-0">
+                                                            <input type="submit" class="btn btn-primary" value="Update Information">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade show active"
+                                    id="tasks" role="tabpanel">
+                                        <div class="profile-setting">
+                                            <form method="post" asp-page-handler="ChangePassword">
+                                                <ul class="profile-edit-list row">
+                                                    <li class="weight-500 col-md-12">
+                                                        <h4 class="text-blue h5 mb-20">Change Password</h4>
+                                                        @if (TempData.ContainsKey("ErrorMessage"))
+                                                        {
+                                                            <p class="alert alert-danger">@TempData["ErrorMessage"]</p>
+                                                        }
+                                                        @if (TempData.ContainsKey("SuccessMessage"))
+                                                        {
+                                                            <p class="alert alert-success">@TempData["SuccessMessage"]</p>
+                                                        }
+                                                        <div class="form-group">
+                                                            <input asp-for="Profile.Id" class="form-control form-control-lg" type="hidden">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label asp-for="Request.OldPassword">Old password</label>
+                                                            <input asp-for="Request.OldPassword" class="form-control form-control-lg" type="text" placeholder="Old password">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label asp-for="Request.NewPassword">New password</label>
+                                                            <input asp-for="Request.NewPassword" class="form-control form-control-lg" type="text" placeholder="New password">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label asp-for="Request.ConfirmPassword">Confirm password</label>
+                                                            <input asp-for="Request.ConfirmPassword" class="form-control form-control-lg" type="text" placeholder="Confirm password">
+                                                        </div>
+                                                        <div class="form-group mb-0">
+                                                            <input type="submit" class="btn btn-primary" value="Submit">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </form>
+                                        </div>
                                     </div>
                                     <!-- Setting Tab End -->
                                 </div>
