@@ -12,6 +12,7 @@ namespace StudentManagingSystem.Model.Interface
         public DbSet<ClassRoom> ClassRooms { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Point> Points { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
 
     }

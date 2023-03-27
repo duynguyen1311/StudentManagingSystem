@@ -18,7 +18,7 @@ namespace StudentManagingSystem.Model
         public DbSet<Department> Departments { get; set; }
         public DbSet<Point> Points { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
-        
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

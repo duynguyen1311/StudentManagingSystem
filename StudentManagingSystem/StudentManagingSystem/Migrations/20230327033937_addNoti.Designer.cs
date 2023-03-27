@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentManagingSystem.Model;
 
@@ -11,9 +12,10 @@ using StudentManagingSystem.Model;
 namespace StudentManagingSystem.Migrations
 {
     [DbContext(typeof(SmsDbContext))]
-    partial class SmsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230327033937_addNoti")]
+    partial class addNoti
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -336,8 +338,8 @@ namespace StudentManagingSystem.Migrations
                     b.Property<string>("Link")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("Status")
-                        .HasColumnType("bit");
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SubTitle")
                         .HasColumnType("nvarchar(max)");

@@ -24,6 +24,9 @@ namespace StudentManagingSystem.Configurations.Mappers
             CreateMap<AppUser, UserProfileViewModel>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
             CreateMap<Point, Point>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
             CreateMap<Point, PointAddRequest>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
+            CreateMap<Notification, Notification>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
+            CreateMap<Notification, NotificationAddRequest>().ReverseMap().ForAllMembers(x => x.Condition((source, target, sourceValue) => sourceValue != null));
+            
             
         }
     }
