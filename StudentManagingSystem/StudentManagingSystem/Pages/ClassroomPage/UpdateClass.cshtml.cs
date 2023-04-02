@@ -20,6 +20,8 @@ namespace StudentManagingSystem.Pages.ClassRoomPage
 
         [BindProperty]
         public ClassRoom ClassRoom { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PageIndex { get; set; }
         public List<Department> listDept { get; set; }
         public List<AppUser> listUser { get; set; }
         public UpdateClassModel(IRoomRepository repository, IDepartmentRepository departmentRepository, IUserRepository userRepository, IMapper mapper)
@@ -40,7 +42,7 @@ namespace StudentManagingSystem.Pages.ClassRoomPage
         {
             ClassRoom.LastModifiedDate = DateTime.Now;
             await _repository.Update(ClassRoom);
-            return RedirectToPage("/ClassRoomPage/ClassRoom");
+            return RedirectToPage("/ClassRoomPage/ClassRoom", new { pageIndex = PageIndex });
         }
     }
 }

@@ -18,12 +18,14 @@ namespace StudentManagingSystem.Pages.DepartmentPage
 
         [BindProperty]
         public Department Department { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PageIndex { get; set; }
         public UpdateDepartmentModel(IDepartmentRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
-        public async Task<IActionResult> OnGetAsync(Guid id)
+        public async Task<IActionResult> OnGetAsync(Guid id, int pageIndex)
         {
             Department = await _repository.GetById(id);
             return Page();
@@ -32,7 +34,7 @@ namespace StudentManagingSystem.Pages.DepartmentPage
         {
             Department.LastModifiedDate = DateTime.Now;
             await _repository.Update(Department);
-            return RedirectToPage("/DepartmentPage/Department");
+            return RedirectToPage("/DepartmentPage/Department", new { pageIndex = PageIndex });
         }
     }
 }

@@ -106,8 +106,8 @@
                                         @if (User.IsInRole(RoleConstant.ADMIN))
                                         {
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <a class="dropdown-item" asp-page="UpdateDepartment" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
-                                                <a class="dropdown-item" asp-page="DeleteDepartment" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete ?')"><i class="dw dw-delete-3"></i> Delete</a>
+                                                <a class="dropdown-item" asp-page="UpdateDepartment" asp-route-id="@item.Id" asp-route-pageIndex="@Model.PageIndex"><i class="dw dw-edit2"></i> Edit</a>
+                                                <a class="dropdown-item" asp-page="DeleteDepartment" asp-route-id="@item.Id" onclick="return confirmDelete(event)"><i class="dw dw-delete-3"></i> Delete</a>
                                             </div>
                                         }
                                         else
@@ -141,4 +141,23 @@
         </div>
     </div>
 </div>
-
+<script>
+    function confirmDelete(event) {
+        event.preventDefault(); // prevent the default action of the button click
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // if the user clicks the confirm button, continue with the delete action
+                window.location.href = event.target.href;
+            }
+        });
+        return false;
+    }
+</script>

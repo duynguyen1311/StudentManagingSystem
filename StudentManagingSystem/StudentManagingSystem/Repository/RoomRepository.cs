@@ -28,6 +28,15 @@ namespace StudentManagingSystem.Repository
         public async Task Delete(Guid id, CancellationToken cancellationToken = default)
         {
             var c = await _context.ClassRooms.FirstOrDefaultAsync(i => i.Id == id);
+            if (c == null) throw new ArgumentException("Can not find !!!");
+            var s = await _context.Students.Where(i => i.ClassRoomId == id).ToListAsync();
+            if (s.Count > 0)
+            {
+                foreach (var item in s)
+                {
+                    item.ClassRoomId = null;
+                }
+            }
             _context.ClassRooms.Remove(c);
             await _context.SaveChangesAsync(cancellationToken);
         }
@@ -44,7 +53,7 @@ namespace StudentManagingSystem.Repository
             return c;
         }
 
-        
+
 
         public async Task<PagedList<ClassRoom>> Search(string? keyword, bool? status, string? tid, int page, int pagesize)
         {
@@ -75,14 +84,14 @@ namespace StudentManagingSystem.Repository
 
         public async Task<List<Student>> ListStudentByClass(Guid sid)
         {
-            var list = await _context.Students.Where(i =>i.Status == true && i.ClassRoomId == sid).Include(i => i.ClassRoom).OrderByDescending(c => c.CreatedDate).ToListAsync();
+            var list = await _context.Students.Where(i => i.Status == true && i.ClassRoomId == sid).Include(i => i.ClassRoom).OrderByDescending(c => c.CreatedDate).ToListAsync();
             return list;
         }
 
         public async Task<PagedList<ClassRoom>> SearchClassByStudent(string? keyword, bool? status, Guid? sid, int page, int pagesize)
         {
             var query = _context.Students.AsQueryable();
-            
+
             var query1 = query.Where(i => i.Id == sid)
                 .Include(i => i.ClassRoom).ThenInclude(i => i.Department)
                 .Include(i => i.ClassRoom).ThenInclude(i => i.User)

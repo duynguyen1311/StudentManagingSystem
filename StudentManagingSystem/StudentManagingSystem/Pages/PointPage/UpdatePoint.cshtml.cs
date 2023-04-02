@@ -18,6 +18,9 @@ namespace StudentManagingSystem.Pages.PointPage
         public List<Student> ListStudent { get; set; }
         public List<Subject> ListSubject { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public int PageIndex { get; set; }
+        
         [BindProperty]
         public Point Point { get; set; }
         public UpdatePointModel(IPointRepository repository, IStudentRepository studentRepository, ISubjectRepository subjectRepository)
@@ -38,7 +41,7 @@ namespace StudentManagingSystem.Pages.PointPage
         {
             Point.LastModifiedDate = DateTime.Now;
             await _repository.Update(Point);
-            return RedirectToPage("/PointPage/Point");
+            return RedirectToPage("/PointPage/Point", new { pageIndex = PageIndex });
         }
 
     }

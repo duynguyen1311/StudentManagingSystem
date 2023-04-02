@@ -17,6 +17,8 @@ namespace StudentManagingSystem.Pages.SubjectPage
 
         [BindProperty]
         public Subject Subject { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PageIndex { get; set; }
         public UpdateSubjectModel(ISubjectRepository repository, IMapper mapper)
         {
             _repository = repository;
@@ -31,7 +33,7 @@ namespace StudentManagingSystem.Pages.SubjectPage
         {
             Subject.LastModifiedDate = DateTime.Now;
             await _repository.Update(Subject);
-            return RedirectToPage("/SubjectPage/Subject");
+            return RedirectToPage("/SubjectPage/Subject", new { pageIndex = PageIndex });
         }
     }
 }

@@ -55,7 +55,7 @@ namespace StudentManagingSystem.Pages.PointPage
                 if (pageIndex == 0) pageIndex = 1;
                 PageIndex = pageIndex;
                 pagesize = 4;
-                ListPoint = await _repository.Search(keyword, null, subId, stuId, pageIndex, pagesize);
+                ListPoint = await _repository.Search(keyword, semester, subId, stuId, pageIndex, pagesize);
                 TotalPage = (int)(Math.Ceiling(ListPoint.TotalCount / (double)pagesize));
             }
 

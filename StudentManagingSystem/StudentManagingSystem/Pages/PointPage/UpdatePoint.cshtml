@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>@Html.LabelFor(c=>c.Point.SubjectId)</label>
+                            <label>Subject</label>
                             <select asp-for="Point.SubjectId" class="custom-select2 form-control disable" style="width: 100%; height: 38px;" disabled="disabled">
                                 @foreach (var item in Model.ListSubject)
                                 {
@@ -105,7 +105,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>@Html.LabelFor(c=>c.Point.StudentId)</label>
+                            <label>Student</label>
                             <select asp-for="Point.StudentId" class="custom-select2 form-control disable" style="width: 100%; height: 38px;" disabled="disabled">
                                 @foreach (var item in Model.ListStudent)
                                 {

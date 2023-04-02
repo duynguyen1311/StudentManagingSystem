@@ -22,6 +22,8 @@ namespace StudentManagingSystem.Pages.StudentPage
         [BindProperty]
         public Student Student { get; set; }
         public List<ClassRoom> listClass { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PageIndex { get; set; }
         public UpdateStudentModel(IStudentRepository repository, IRoomRepository roomRepository, IMapper mapper, UserManager<AppUser> userManager)
         {
             _repository = repository;
@@ -49,7 +51,7 @@ namespace StudentManagingSystem.Pages.StudentPage
                 user.Activated = false;
             }
             await _userManager.UpdateAsync(user);
-            return RedirectToPage("/StudentPage/Student");
+            return RedirectToPage("/StudentPage/Student", new { pageIndex = PageIndex });
         }
     }
 }

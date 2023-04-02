@@ -14,6 +14,7 @@ namespace StudentManagingSystem.Pages.ClassRoomPage
         private readonly IStudentRepository _studentRepository;
 
         public PagedList<ClassRoom> ListClassRoom { get; set; }
+        public List<Student> ListStudent { get; set; }
         [BindProperty]
         public string? Keyword { get; set; }
         [BindProperty]
@@ -63,12 +64,6 @@ namespace StudentManagingSystem.Pages.ClassRoomPage
             }
             
             return Page();
-        }
-        public async Task<IActionResult> Lists(Guid id)
-        {
-            // load data for the item with the specified ID
-            var item = await _repository.ListStudentByClass(id);
-            return Partial("_ListStudentPartial", item);
         }
     }
 }

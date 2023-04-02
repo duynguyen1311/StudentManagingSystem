@@ -17,6 +17,8 @@ namespace StudentManagingSystem.Pages.NotificationPage
 
         [BindProperty]
         public Notification Notification { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PageIndex { get; set; }
         public UpdateNotificationModel(INotiRepository repository, IMapper mapper)
         {
             _repository = repository;
@@ -31,7 +33,7 @@ namespace StudentManagingSystem.Pages.NotificationPage
         {
             Notification.LastModifiedDate = DateTime.Now;
             await _repository.Update(Notification);
-            return RedirectToPage("/NotificationPage/Notification");
+            return RedirectToPage("/NotificationPage/Notification", new { pageIndex = PageIndex });
         }
     }
 }

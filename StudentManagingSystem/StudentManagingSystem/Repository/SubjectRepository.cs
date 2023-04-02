@@ -47,7 +47,6 @@ namespace StudentManagingSystem.Repository
         public async Task<PagedList<Subject>> Search(string? keyword, bool? status,int? semester, int page, int pagesize)
         {
             var query = _context.Subjects.AsQueryable();
-            var res = await query.ToListAsync();
             if (!string.IsNullOrEmpty(keyword))
             {
                 query = query.Where(c => (!string.IsNullOrEmpty(c.SubjectName) && c.SubjectName.Contains(keyword.ToLower().Trim()))
@@ -61,12 +60,13 @@ namespace StudentManagingSystem.Repository
             {
                 query = query.Where(i => i.Semester == semester);
             }
-            var list = await query.OrderByDescending(c => c.CreatedDate)
-                .Skip((page - 1) * pagesize)
+            var query1 = query.OrderByDescending(c => c.CreatedDate);
+            var query2 = await query1.Skip((page - 1) * pagesize)
                 .Take(pagesize).ToListAsync();
+            var res = await query.ToListAsync();
             return new PagedList<Subject>
             {
-                Data = list,
+                Data = query2,
                 TotalCount = res.Count
             };
         }

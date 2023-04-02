@@ -1,4 +1,5 @@
 ﻿@page
+@using StudentManagingSystem.Model;
 @using StudentManagingSystem.Utility;
 @model StudentManagingSystem.Pages.ClassRoomPage.ClassRoomModel
 @{
@@ -94,7 +95,6 @@
                         @foreach (var item in Model.ListClassRoom.Data)
                         {
                             <tr>
-                                <td name="classId">@item.Id</td>
                                 <td class="table-plus">@item.ClassName</td>
                                 <td>@item.ClassCode</td>
                                 <td>@((item.Department != null && item.Department.DepartmentName != null) ? item.Department.DepartmentName : "")</td>
@@ -110,18 +110,15 @@
                                         @if (User.IsInRole(RoleConstant.ADMIN))
                                         {
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Edit</a>
-                                                <a class="dropdown-item" asp-page="DeleteClass" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete ?')"><i class="dw dw-delete-3"></i> Delete</a>
+                                                <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id" asp-route-pageIndex="@Model.PageIndex"><i class="dw dw-edit2"></i> Edit</a>
+                                                <a class="dropdown-item" asp-page="DeleteClass" asp-route-id="@item.Id" onclick="return confirmDelete(event)"><i class="dw dw-delete-3"></i> Delete</a>
                                             </div>
                                         }
                                         else
                                         {
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                                 <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id"><i class="dw dw-edit2"></i>View</a>
-                                                <a class="dropdown-item" data-toggle="modal" data-target="@("#List")" data-url="@Url.Action($"Lists/{item.Id}")">
-                                                    <i class="dw dw-edit2"></i>List Student</a>
-                                                @*<a class="btn btn-info" data-toggle="modal" data-target="@("#detail-"+item.Id)" data-url="@Url.Action($"Details/{item.Id}")">Details</a>*@
-                                                @await Html.PartialAsync("_ListStudentPartial", item)
+                                                
                                             </div>
                                         }
                                     </div>
@@ -149,3 +146,23 @@
         </div>
     </div>
 </div>
+<script>
+    function confirmDelete(event) {
+        event.preventDefault(); // prevent the default action of the button click
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // if the user clicks the confirm button, continue with the delete action
+                window.location.href = event.target.href;
+            }
+        });
+        return false;
+    }
+</script>
